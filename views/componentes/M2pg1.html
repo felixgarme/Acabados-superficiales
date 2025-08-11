@@ -1,0 +1,243 @@
+<div class="container">
+    <div class="header">
+        <div class="logo">AngloAmerican</div>
+        <h1>Acabados Superficiales</h1>
+        <p class="subtitle">Curso Interactivo de Unidades de Rugosidad</p>
+    </div>
+
+    <div class="content-grid">
+        <div class="info-panel fade-in">
+            <h3>Unidades de Rugosidad</h3>
+            <ul class="units-list">
+                <li>
+                    <span class="unit-label">Micrómetro (μm):</span>
+                    <span>Unidad primaria ISO para medir desviaciones de superficie</span>
+                </li>
+                <li>
+                    <span class="unit-label">Micro pulgadas (μin):</span>
+                    <span>Estándar ANSI</span>
+                </li>
+                <li>
+                    <span class="unit-label">Conversión:</span>
+                    <span class="tooltip" data-tooltip="Factor de conversión estándar">1 μm = 39,37 μin</span>
+                </li>
+                <li>
+                    <span class="unit-label">Selección:</span>
+                    <span>Según norma del dibujo técnico</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info-panel fade-in">
+            <h3>Datos Interactivos</h3>
+            <div class="interactive-buttons">
+                <button class="btn" onclick="highlightGrades()">Destacar Grados</button>
+                <button class="btn" onclick="showConversion()">Mostrar Conversión</button>
+                <button class="btn" onclick="resetTable()">Resetear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container fade-in">
+        <h2 class="chart-title">Tabla de Conversión de Rugosidad Superficial Aproximada</h2>
+        
+        <table class="conversion-table" id="conversionTable">
+            <thead>
+                <tr>
+                    <th rowspan="2">Número de<br>Grado de<br>Rugosidad</th>
+                    <th colspan="2">Sistema Americano</th>
+                    <th colspan="2">Sistema Métrico</th>
+                </tr>
+                <tr>
+                    <th>Ra (μin)</th>
+                    <th>RMS (μin)</th>
+                    <th>Ra (μm)</th>
+                    <th>RMS (μm)</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td class="grade-column">N12</td>
+                    <td>2000</td>
+                    <td>2200</td>
+                    <td>50</td>
+                    <td>55</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N11</td>
+                    <td>1000</td>
+                    <td>1100</td>
+                    <td>25</td>
+                    <td>27.5</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N10</td>
+                    <td>500</td>
+                    <td>550</td>
+                    <td>12.5</td>
+                    <td>13.75</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N9</td>
+                    <td>250</td>
+                    <td>275</td>
+                    <td>6.3</td>
+                    <td>6.13</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N8</td>
+                    <td>125</td>
+                    <td>137.5</td>
+                    <td>3.2</td>
+                    <td>3.52</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N7</td>
+                    <td>63</td>
+                    <td>69.3</td>
+                    <td>1.6</td>
+                    <td>1.76</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N6</td>
+                    <td>32</td>
+                    <td>35.2</td>
+                    <td>0.8</td>
+                    <td>0.88</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N5</td>
+                    <td>16</td>
+                    <td>17.6</td>
+                    <td>0.4</td>
+                    <td>0.44</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N4</td>
+                    <td>8</td>
+                    <td>8.8</td>
+                    <td>0.2</td>
+                    <td>0.22</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N3</td>
+                    <td>4</td>
+                    <td>4.4</td>
+                    <td>0.1</td>
+                    <td>0.11</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N2</td>
+                    <td>2</td>
+                    <td>2.2</td>
+                    <td>0.05</td>
+                    <td>0.055</td>
+                </tr>
+                <tr>
+                    <td class="grade-column">N1</td>
+                    <td>1</td>
+                    <td>1.1</td>
+                    <td>0.025</td>
+                    <td>0.035</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="calculator fade-in">
+        <h3>Calculadora de Conversión</h3>
+        <div class="calc-input">
+            <input type="number" id="inputValue" placeholder="Ingrese valor" step="any">
+            <select id="fromUnit">
+                <option value="um">Micrómetros (μm)</option>
+                <option value="uin">Micropulgadas (μin)</option>
+            </select>
+            <button class="btn" onclick="convertUnits()">Convertir</button>
+        </div>
+        <div class="calc-result" id="calcResult" style="display: none;"></div>
+    </div>
+</div>
+<script>
+    // Funciones interactivas
+    function highlightGrades() {
+        const rows = document.querySelectorAll('#tableBody tr');
+        rows.forEach((row, index) => {
+            setTimeout(() => {
+                row.classList.add('highlight-row');
+                setTimeout(() => {
+                    row.classList.remove('highlight-row');
+                }, 1500);
+            }, index * 200);
+        });
+    }
+
+    function showConversion() {
+        const rows = document.querySelectorAll('#tableBody tr');
+        rows.forEach((row, index) => {
+            const raMicro = parseFloat(row.cells[3].textContent);
+            const raInch = parseFloat(row.cells[1].textContent);
+            const conversion = (raMicro * 39.37).toFixed(2);
+            
+            setTimeout(() => {
+                if (Math.abs(conversion - raInch) < 1) {
+                    row.style.backgroundColor = '#d4edda';
+                    row.style.borderLeft = '4px solid #28a745';
+                } else {
+                    row.style.backgroundColor = '#fff3cd';
+                    row.style.borderLeft = '4px solid #ffc107';
+                }
+            }, index * 150);
+        });
+    }
+
+    function resetTable() {
+        const rows = document.querySelectorAll('#tableBody tr');
+        rows.forEach(row => {
+            row.classList.remove('highlight-row');
+            row.style.backgroundColor = '';
+            row.style.borderLeft = '';
+        });
+    }
+
+    function convertUnits() {
+        const value = parseFloat(document.getElementById('inputValue').value);
+        const fromUnit = document.getElementById('fromUnit').value;
+        const resultDiv = document.getElementById('calcResult');
+        
+        if (isNaN(value) || value < 0) {
+            resultDiv.innerHTML = '⚠️ Por favor, ingrese un valor válido';
+            resultDiv.style.display = 'block';
+            return;
+        }
+        
+        let result;
+        if (fromUnit === 'um') {
+            result = value * 39.37;
+            resultDiv.innerHTML = `📐 ${value} μm = <strong>${result.toFixed(2)} μin</strong>`;
+        } else {
+            result = value / 39.37;
+            resultDiv.innerHTML = `📐 ${value} μin = <strong>${result.toFixed(4)} μm</strong>`;
+        }
+        
+        resultDiv.style.display = 'block';
+        resultDiv.classList.add('fade-in');
+    }
+
+    // Efectos de entrada
+    document.addEventListener('DOMContentLoaded', function() {
+        const elements = document.querySelectorAll('.fade-in');
+        elements.forEach((element, index) => {
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+    });
+
+    // Enter key para calculadora
+    document.getElementById('inputValue').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            convertUnits();
+        }
+    });
+</script>

@@ -1,0 +1,323 @@
+.header {
+    background: linear-gradient(135deg, #031795 0%, #0421c7 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(3, 23, 149, 0.3);
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: white;
+    color: #031795;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.info-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-left: 5px solid #031795;
+}
+
+.info-panel h3 {
+    color: #031795;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.info-panel h3::before {
+    content: "📐";
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.units-list {
+    list-style: none;
+}
+
+.units-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.units-list li:last-child {
+    border-bottom: none;
+}
+
+.unit-label {
+    font-weight: 600;
+    color: #031795;
+}
+
+.chart-container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    grid-column: 1 / -1;
+}
+
+.chart-title {
+    color: #031795;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.conversion-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.conversion-table th {
+    background: #031795;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.conversion-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+.conversion-table tbody tr:hover {
+    background-color: #f8f9ff;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(3, 23, 149, 0.1);
+}
+
+.grade-column {
+    background: linear-gradient(135deg, #031795, #0421c7);
+    color: white !important;
+    font-weight: bold;
+}
+
+.interactive-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background: linear-gradient(135deg, #031795, #0421c7);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(3, 23, 149, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(3, 23, 149, 0.4);
+    background: linear-gradient(135deg, #0421c7, #031795);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.highlight-row {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7) !important;
+    border-left: 4px solid #031795;
+}
+
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #031795;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.calculator {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.calculator h3 {
+    color: #031795;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.calc-input {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.calc-input input, .calc-input select {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.calc-input input:focus, .calc-input select:focus {
+    border-color: #031795;
+    outline: none;
+}
+
+.calc-result {
+    background: #f8f9ff;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #031795;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header .subtitle {
+        font-size: 1rem;
+    }
+
+    .logo {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 15px;
+        display: inline-block;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .conversion-table {
+        font-size: 0.8rem;
+    }
+
+    .conversion-table th,
+    .conversion-table td {
+        padding: 8px 5px;
+    }
+
+    .interactive-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 200px;
+    }
+
+    .calc-input {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .calc-input input,
+    .calc-input select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .info-panel,
+    .chart-container,
+    .calculator {
+        padding: 20px;
+    }
+
+    .conversion-table {
+        font-size: 0.7rem;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
