@@ -19,18 +19,7 @@
     opacity: 0.9;
 }
 
-.logo {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    background: white;
-    color: #031795;
-    padding: 10px 15px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
+
 
 .content-grid {
     display: grid;
