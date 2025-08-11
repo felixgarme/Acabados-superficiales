@@ -1,0 +1,343 @@
+.surface-finishes-course {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    gap: 10px;
+}
+
+.surface-finishes-course::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+}
+
+.sfc-sidebar {
+    width: 300px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.sfc-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sfc-header {
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.sfc-main-title {
+    color: #031795;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.sfc-subtitle {
+    color: #031795;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.sfc-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+    color: #031795;
+    font-weight: bold;
+}
+
+.sfc-window {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 3px solid transparent;
+    overflow: hidden;
+}
+
+.sfc-window:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: #031795;
+}
+
+.sfc-window.active {
+    border-color: #031795;
+    box-shadow: 0 10px 30px rgba(3, 23, 149, 0.2);
+    transform: scale(1.02);
+}
+
+.sfc-window-header {
+    background: linear-gradient(135deg, #031795, #0066cc);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sfc-window-icon {
+    font-size: 1.2rem;
+}
+
+.sfc-window-body {
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.sfc-window-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sfc-window-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.sfc-window-body::-webkit-scrollbar-thumb {
+    background: #031795;
+    border-radius: 3px;
+}
+
+.sfc-roughness-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sfc-roughness-item {
+    background: #f8f9ff;
+    margin-bottom: 10px;
+    padding: 6px;
+    border-radius: 6px;
+    border-left: 3px solid #031795;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sfc-roughness-item:hover {
+    background: #e8f0ff;
+    transform: translateX(5px);
+}
+
+.sfc-roughness-item.selected {
+    background: #031795;
+    color: white;
+}
+
+.sfc-roughness-code {
+    font-weight: bold;
+    color: #031795;
+    font-size: 1rem;
+}
+
+.sfc-roughness-item.selected .sfc-roughness-code {
+    color: white;
+}
+
+.sfc-roughness-value {
+    margin-top: 3px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.sfc-roughness-process {
+    margin-top: 0;
+    font-size: 0.75rem;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.sfc-content-area {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sfc-content-title {
+    color: #031795;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sfc-sample-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.sfc-sample-image:hover {
+    transform: scale(1.05);
+}
+
+.sfc-image-description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 600px;
+}
+
+.sfc-welcome-content {
+    text-align: center;
+    color: #666;
+}
+
+.sfc-welcome-icon {
+    font-size: 4rem;
+    color: #031795;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.sfc-info-panel {
+    background: linear-gradient(135deg, #031795, #0066cc);
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 10px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.sfc-info-panel.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.sfc-info-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sfc-info-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.sfc-applications {
+    margin-top: 10px;
+}
+
+.sfc-applications p {
+    margin: 5px 0;
+    padding-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .surface-finishes-course {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .sfc-sidebar {
+        width: 100%;
+        min-width: auto;
+        order: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .sfc-main-content {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .surface-finishes-course {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .sfc-main-title {
+        font-size: 2rem;
+    }
+
+    .sfc-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .sfc-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .sfc-logo {
+        position: relative;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .sfc-content-area {
+        padding: 10px;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .surface-finishes-course {
+        padding: 10px;
+    }
+
+    .sfc-main-title {
+        font-size: 1.8rem;
+    }
+
+    .sfc-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .sfc-content-title {
+        font-size: 1.4rem;
+    }
+
+    .sfc-window-header {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .sfc-window-body {
+        padding: 10px;
+    }
+}
