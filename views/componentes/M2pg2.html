@@ -1,0 +1,466 @@
+<div class="sf-container">
+  <style>
+    .sf-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+      border-radius: 12px;
+
+    }
+
+    .sf-header {
+      background: linear-gradient(135deg, #031795 0%, #0f2fb3 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(3, 23, 149, 0.3);
+    }
+
+    .sf-main-title {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .sf-subtitle {
+      font-size: 1.3em;
+      font-weight: 300;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .sf-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .sf-info-panel {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid #031795;
+    }
+
+    .sf-info-title {
+      color: #031795;
+      font-size: 1.5em;
+      font-weight: 600;
+      margin: 0 0 20px 0;
+    }
+
+    .sf-info-text {
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .sf-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sf-feature-item {
+      background: #f8f9fa;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #031795;
+      transition: all 0.3s ease;
+    }
+
+    .sf-feature-item:hover {
+      background: #e3f2fd;
+      transform: translateX(5px);
+    }
+
+    .sf-table-container {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .sf-table-header {
+      background: linear-gradient(135deg, #031795 0%, #0f2fb3 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .sf-table-title {
+      font-size: 1.4em;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .sf-table-wrapper {
+      overflow-x: auto;
+      background: white;
+    }
+
+    .sf-roughness-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95em;
+    }
+
+    .sf-table-head {
+      background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+      color: white;
+    }
+
+    .sf-table-head th {
+      padding: 15px 10px;
+      text-align: center;
+      font-weight: 600;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .sf-table-head th:last-child {
+      border-right: none;
+    }
+
+    .sf-roughness-table td {
+      padding: 12px 8px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+      border-right: 1px solid #f0f0f0;
+      transition: background-color 0.3s ease;
+    }
+
+    .sf-roughness-table td:last-child {
+      border-right: none;
+      text-align: left;
+      padding-left: 15px;
+    }
+
+    .sf-roughness-table tr:hover td {
+      background-color: #f0f8ff;
+    }
+
+    .sf-roughness-value {
+      font-weight: 600;
+      color: #031795;
+    }
+
+    .sf-class-value {
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    .sf-symbol {
+      font-size: 1.2em;
+      color: #031795;
+      font-weight: bold;
+    }
+
+    .sf-interactive-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .sf-btn {
+      background: linear-gradient(135deg, #031795 0%, #0f2fb3 100%);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(3, 23, 149, 0.3);
+    }
+
+    .sf-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(3, 23, 149, 0.4);
+    }
+
+    .sf-btn:active {
+      transform: translateY(0);
+    }
+
+    .sf-highlight-row {
+      background-color: #fff3cd !important;
+      animation: sf-pulse 2s ease-in-out;
+    }
+
+    @keyframes sf-pulse {
+      0%, 100% { background-color: #fff3cd; }
+      50% { background-color: #ffeaa7; }
+    }
+
+    .sf-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .sf-modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: sf-slideIn 0.3s ease-out;
+    }
+
+    @keyframes sf-slideIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sf-modal-header {
+      color: #031795;
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .sf-close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .sf-close:hover {
+      color: #031795;
+    }
+
+    .sf-note {
+      background: #e3f2fd;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #2196f3;
+      margin: 20px 0;
+      font-size: 0.9em;
+      line-height: 1.5;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .sf-container {
+        padding: 15px;
+      }
+
+      .sf-main-title {
+        font-size: 1.8em;
+      }
+
+      .sf-subtitle {
+        font-size: 1.1em;
+      }
+
+      .sf-content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .sf-interactive-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sf-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .sf-roughness-table {
+        font-size: 0.8em;
+      }
+
+      .sf-roughness-table td {
+        padding: 8px 4px;
+      }
+
+      .sf-modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sf-main-title {
+        font-size: 1.5em;
+      }
+
+      .sf-header {
+        padding: 20px;
+      }
+
+      .sf-info-panel {
+        padding: 20px;
+      }
+
+      .sf-roughness-table {
+        font-size: 0.75em;
+      }
+
+      .sf-table-head th,
+      .sf-roughness-table td {
+        padding: 6px 3px;
+      }
+    }
+  </style>
+
+
+  <div class="sf-content-grid">
+    <div class="sf-info-panel">
+      <h2 class="sf-info-title">Información General</h2>
+      <p class="sf-info-text">
+        Es un sistema normalizado utilizado para clasificar la rugosidad superficial en ingeniería 
+        y fabricación. Estos grados, que van de N1 (el más fino) a N12 (el más áspero), 
+        corresponden a valores de Ra máximos específicos.
+      </p>
+      
+      <ul class="sf-feature-list">
+        <li class="sf-feature-item">
+          <strong>Definición:</strong> Clases N1 a N12 con rangos de Ra
+        </li>
+        <li class="sf-feature-item">
+          <strong>Especificación:</strong> Acabado en planos e ingeniería de detalle
+        </li>
+        <li class="sf-feature-item">
+          <strong>Aplicaciones:</strong> N3 para óptica, N10 para desbaste
+        </li>
+      </ul>
+    </div>
+
+    <div class="sf-table-container">
+      <div class="sf-table-header">
+        <h3 class="sf-table-title">Tabla de Rugosidad y Aplicaciones</h3>
+      </div>
+      
+      <div class="sf-table-wrapper">
+        <table class="sf-roughness-table">
+          <thead class="sf-table-head">
+            <tr>
+              <th>Rugosidad<br>μm</th>
+              <th>Clase de<br>rugosidad</th>
+              <th>Símbolo</th>
+              <th>Aplicaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-class="N12">
+              <td class="sf-roughness-value">50</td>
+              <td class="sf-class-value">N12</td>
+              <td class="sf-symbol">∼</td>
+              <td>Forja, fundición y estampación</td>
+            </tr>
+            <tr data-class="N11">
+              <td class="sf-roughness-value">25</td>
+              <td class="sf-class-value">N11</td>
+              <td class="sf-symbol">∼</td>
+              <td>Forja, fundición y estampación</td>
+            </tr>
+            <tr data-class="N10">
+              <td class="sf-roughness-value">12.5</td>
+              <td class="sf-class-value">N10</td>
+              <td class="sf-symbol">∇</td>
+              <td>Trabajo de desbaste arranque bastago de viruta</td>
+            </tr>
+            <tr data-class="N9">
+              <td class="sf-roughness-value">6.3</td>
+              <td class="sf-class-value">N9</td>
+              <td class="sf-symbol">∇∇</td>
+              <td>Torneado fino, rectificado, brochado, escariado</td>
+            </tr>
+            <tr data-class="N8">
+              <td class="sf-roughness-value">3.2</td>
+              <td class="sf-class-value">N8</td>
+              <td class="sf-symbol">∇∇</td>
+              <td>Torneado fino, rectificado, brochado, escariado</td>
+            </tr>
+            <tr data-class="N7">
+              <td class="sf-roughness-value">1.6</td>
+              <td class="sf-class-value">N7</td>
+              <td class="sf-symbol">∇∇∇</td>
+              <td>Escariado, rectificado, esmerilado</td>
+            </tr>
+            <tr data-class="N6">
+              <td class="sf-roughness-value">0.8</td>
+              <td class="sf-class-value">N6</td>
+              <td class="sf-symbol">∇∇∇</td>
+              <td>Escariado, rectificado, esmerilado</td>
+            </tr>
+            <tr data-class="N5">
+              <td class="sf-roughness-value">0.4</td>
+              <td class="sf-class-value">N5</td>
+              <td class="sf-symbol">∇∇∇∇</td>
+              <td>Rectificado fino, bruñido</td>
+            </tr>
+            <tr data-class="N4">
+              <td class="sf-roughness-value">0.2</td>
+              <td class="sf-class-value">N4</td>
+              <td class="sf-symbol">∇∇∇∇</td>
+              <td>Rectificado fino, bruñido</td>
+            </tr>
+            <tr data-class="N3">
+              <td class="sf-roughness-value">0.1</td>
+              <td class="sf-class-value">N3</td>
+              <td class="sf-symbol">∇∇∇∇∇</td>
+              <td>Rectificado fino, bruñido</td>
+            </tr>
+            <tr data-class="N2">
+              <td class="sf-roughness-value">0.05</td>
+              <td class="sf-class-value">N2</td>
+              <td class="sf-symbol">∇∇∇∇∇</td>
+              <td>Rectificado fino, bruñido</td>
+            </tr>
+            <tr data-class="N1">
+              <td class="sf-roughness-value">0.025</td>
+              <td class="sf-class-value">N1</td>
+              <td class="sf-symbol">∇∇∇∇∇</td>
+              <td>Rectificado fino, bruñido</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="sf-note">
+    <strong>Nota importante:</strong> Los símbolos ∇ y ∇∇∇ que definen la calidad de la textura 
+    de la superficie mecanizada, se utilizan en planos taller de piezas que deben mecanizarse en fresadora.
+  </div>
+
+  <!-- Modal para información adicional -->
+  <div id="sf-info-modal" class="sf-modal">
+    <div class="sf-modal-content">
+      <span class="sf-close">&times;</span>
+      <h2 class="sf-modal-header" id="sf-modal-title">Información</h2>
+      <div id="sf-modal-body"></div>
+    </div>
+  </div>
+</div>
