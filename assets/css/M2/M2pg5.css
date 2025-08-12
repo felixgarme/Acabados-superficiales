@@ -1,0 +1,185 @@
+.surface-finish-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+
+  border-radius: 10px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* HEADER */
+.surface-finish-header {
+  background: linear-gradient(135deg, #283593, #1a237e);
+  color: white;
+  padding: 12px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  margin-bottom: 12px;
+  animation: slideDown 0.5s ease;
+}
+
+.surface-finish-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* GRID */
+.surface-finish-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* TEORÍA */
+.surface-finish-theory {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+
+  animation: fadeInUp 0.6s ease;
+}
+
+.surface-finish-theory h2 {
+  color: #2c3e99;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.surface-finish-theory ul {
+  margin: 0;
+  padding: 0 0 0 10px;
+  list-style: none;
+}
+
+.surface-finish-theory li {
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  background: #f0f2fd;
+  border-left: 3px solid #2c3e99;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  animation: fadeInList 0.4s ease both;
+}
+
+.surface-finish-theory li:hover {
+  background: #e0e3fa;
+  transform: translateX(4px);
+}
+
+/* SÍMBOLOS */
+.surface-finish-symbols {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  border: 2px solid #5c6bc0;
+  animation: fadeInUp 0.8s ease;
+}
+
+.surface-finish-symbols h3 {
+  color: #3f51b5;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* GRID DE SÍMBOLOS */
+.symbols-grid {
+  display: grid;
+
+}
+
+.symbol-item {
+  text-align: center;
+  padding: 8px;
+
+  border-radius: 6px;
+  border: 1px solid #c5cae9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: zoomIn 0.4s ease both;
+}
+
+.symbol-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(63, 81, 181, 0.2);
+}
+
+
+.symbol-item img {
+    width: 60%;
+    max-width: 100%;
+    height: 100%;
+    margin-bottom: 5px;
+}
+
+
+.symbol-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #444;
+  line-height: 1.3;
+}
+
+/* FORMATOS */
+.format-highlight {
+  background: #e8eaf6;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+  border-left: 4px solid #3f51b5;
+}
+
+.example-content {
+  background: #f1f8e9;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border-left: 4px solid #4caf50;
+}
+
+.format-highlight strong {
+  color: #2c3e99;
+}
+
+/* Botones ocultos */
+.interactive-buttons,
+.btn-interactive {
+  display: none;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInList {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* RESPONSIVE */
+@media (min-width: 1920px) {
+  .surface-finish-container { max-width: 1400px; }
+  .surface-finish-header h1 { font-size: 2.2rem; }
+  .symbols-grid { grid-template-columns: repeat(4, 1fr); }
+  .symbol-item img { max-width: 140px; }
+}
