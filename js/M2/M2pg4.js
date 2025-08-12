@@ -1,157 +1,120 @@
-class SurfaceFinishCourse {
-  constructor() {
-    this.currentSymbol = 'basic';
-    this.selectedItems = new Set();
-    this.init();
+const sfModule = (function() {
+  let currentView = 'general';
+  
+  const detailsContent = {
+    iso: {
+      title: 'Normas ISO para Acabados Superficiales',
+      content: `
+        <p><strong>ISO 1302:</strong> Especifica las reglas para la indicación de los estados superficiales en los dibujos técnicos utilizando símbolos gráficos.</p>
+        <p><strong>ISO 21920:</strong> Define los términos, definiciones y parámetros de superficie para la especificación de texturas superficiales.</p>
+        <ul style="margin: 8px 0; padding-left: 20px;">
+          <li>Establece métodos de medición estandarizados</li>
+          <li>Define parámetros de rugosidad (Ra, Rz, Rq)</li>
+          <li>Especifica longitudes de muestreo</li>
+          <li>Proporciona clasificación por números de clase N1-N12</li>
+        </ul>
+      `
+    },
+    symbol: {
+      title: 'Análisis del Símbolo de Rugosidad',
+      content: `
+        <p>El símbolo básico consiste en dos líneas inclinadas que forman un ángulo de 60°, similares a una marca de verificación.</p>
+        <p><strong>Componentes del símbolo:</strong></p>
+        <ul style="margin: 8px 0; padding-left: 20px;">
+          <li><strong>Línea horizontal superior:</strong> Contiene el valor de rugosidad Ra</li>
+          <li><strong>Posiciones específicas:</strong> Cada letra tiene una ubicación definida</li>
+          <li><strong>Información técnica:</strong> Incluye proceso, dirección y tolerancias</li>
+          <li><strong>Flexibilidad:</strong> Permite omitir información no requerida</li>
+        </ul>
+        <p>La correcta interpretación garantiza la calidad del producto final.</p>
+      `
+    }
+  };
+
+  function showDetails(type) {
+    const panel = document.getElementById('detailsPanel');
+    const title = document.getElementById('detailsTitle');
+    const content = document.getElementById('detailsContent');
+    
+    if (detailsContent[type]) {
+      // Preparar animación
+      panel.classList.remove('fade-out');
+      panel.classList.add('active', 'fade-in');
+      
+      // Añadir contenido con un pequeño delay para sincronizar con la animación
+      setTimeout(() => {
+        title.textContent = detailsContent[type].title;
+        content.innerHTML = detailsContent[type].content;
+      }, 150);
+
+      currentView = type;
+    }
   }
 
-  init() {
-    this.bindEvents();
-    this.showSymbolType('basic');
+  function resetView() {
+    const panel = document.getElementById('detailsPanel');
+    
+    // Animación de salida
+    panel.classList.remove('fade-in');
+    panel.classList.add('fade-out');
+
+    // Esperar a que termine la animación para ocultar
+    setTimeout(() => {
+      panel.classList.remove('active');
+      panel.classList.remove('fade-out');
+    }, 300);
+    
+    // Quitar selección
+    document.querySelectorAll('.sf-legend-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    currentView = 'general';
   }
 
-  bindEvents() {
-    // Navigation buttons
-    const navButtons = document.querySelectorAll('.sf-nav-btn');
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const symbolType = e.target.dataset.symbol;
-        this.handleNavigation(symbolType);
+  function highlightParameter(param) {
+    document.querySelectorAll('.sf-legend-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    const selectedItem = document.querySelector(`[data-param="${param}"]`);
+    if (selectedItem) {
+      selectedItem.classList.add('active');
+    }
+  }
+
+  function init() {
+    document.querySelectorAll('.sf-legend-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const param = this.getAttribute('data-param');
+        highlightParameter(param);
       });
     });
 
-    // Symbol items
-    const symbolItems = document.querySelectorAll('.sf-symbol-item');
-    symbolItems.forEach(item => {
-      item.addEventListener('click', (e) => {
-        this.handleSymbolSelection(e.currentTarget);
+    document.querySelectorAll('.sf-label').forEach(label => {
+      label.addEventListener('click', function() {
+        const param = this.querySelector('text').textContent;
+        highlightParameter(param);
       });
     });
-
-    // Control buttons
-    const quizBtn = document.getElementById('quiz-btn');
-    const resetBtn = document.getElementById('reset-btn');
-    
-    if (quizBtn) {
-      quizBtn.addEventListener('click', () => this.startQuiz());
-    }
-    
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => this.reset());
-    }
   }
 
-  handleNavigation(symbolType) {
-    // Update active navigation button
-    document.querySelectorAll('.sf-nav-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    document.querySelector(`[data-symbol="${symbolType}"]`).classList.add('active');
-    
-    this.currentSymbol = symbolType;
-    this.showSymbolType(symbolType);
-  }
+  return {
+    init,
+    showDetails,
+    resetView
+  };
+})();
 
-  showSymbolType(type) {
-    const items = document.querySelectorAll('.sf-symbol-item');
-    
-    items.forEach(item => {
-      const itemType = item.dataset.type;
-      if (type === 'basic') {
-        item.style.display = 'block';
-      } else {
-        item.style.display = itemType === type ? 'block' : 'none';
-      }
-    });
-  }
-
-  handleSymbolSelection(item) {
-    const itemType = item.dataset.type;
-    
-    if (this.selectedItems.has(itemType)) {
-      this.selectedItems.delete(itemType);
-      item.classList.remove('selected');
-    } else {
-      this.selectedItems.add(itemType);
-      item.classList.add('selected');
-    }
-    
-    this.updateSelectionFeedback();
-  }
-
-  updateSelectionFeedback() {
-    const count = this.selectedItems.size;
-    if (count > 0) {
-      console.log(`Elementos seleccionados: ${count}`);
-    }
-  }
-
-  startQuiz() {
-    const questions = [
-      'Los acabados superficiales se definen por las normas ISO 1302 y 21920',
-      'El símbolo básico incluye información sobre rugosidad Ra',
-      'La retirada de material se indica con un círculo',
-      'El formato típico es Ra 0,8 N6'
-    ];
-    
-    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-    
-    const userAnswer = confirm(`Pregunta: ¿Es correcta esta afirmación?\n\n"${randomQuestion}"\n\nHaz clic en Aceptar si es VERDADERO o Cancelar si es FALSO`);
-    
-    let isCorrect = false;
-    switch (randomQuestion) {
-      case questions[0]:
-      case questions[1]:
-      case questions[3]:
-        isCorrect = userAnswer === true;
-        break;
-      case questions[2]:
-        isCorrect = userAnswer === false;
-        break;
-    }
-    
-    alert(isCorrect ? 'Correcto! Excelente conocimiento.' : 'Incorrecto. Revisa el material nuevamente.');
-  }
-
-  reset() {
-    // Clear selections
-    this.selectedItems.clear();
-    document.querySelectorAll('.sf-symbol-item').forEach(item => {
-      item.classList.remove('selected');
-    });
-    
-    // Reset to basic view
-    this.handleNavigation('basic');
-    
-    // Show all items
-    document.querySelectorAll('.sf-symbol-item').forEach(item => {
-      item.style.display = 'block';
-    });
-    
-    console.log('Curso reiniciado');
-  }
-
-  // Public method to get current state
-  getState() {
-    return {
-      currentSymbol: this.currentSymbol,
-      selectedItems: Array.from(this.selectedItems)
-    };
-  }
+function showDetails(type) {
+  sfModule.showDetails(type);
 }
 
-// Initialize the course when the component loads
-let surfaceFinishCourse;
-
-function initSurfaceFinishCourse() {
-  if (document.querySelector('.surface-finish-container')) {
-    surfaceFinishCourse = new SurfaceFinishCourse();
-  }
+function resetView() {
+  sfModule.resetView();
 }
 
-// Auto-initialize
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSurfaceFinishCourse);
+  document.addEventListener('DOMContentLoaded', sfModule.init);
 } else {
-  initSurfaceFinishCourse();
+  sfModule.init();
 }
