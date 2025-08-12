@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes y Tolerancias</title>
+    <!-- Incluye el CDN de Tailwind CSS para un diseño moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para la transición de la altura */
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1rem;
+        }
+        .content.active {
+            max-height: 500px; /* Un valor lo suficientemente grande para que quepa el contenido */
+            padding: 1rem;
+        }
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+        .arrow.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans p-4 flex justify-center items-center min-h-screen">
+
+    <div class="max-w-4xl w-full bg-white shadow-xl rounded-2xl p-8 space-y-4">
+
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6">Ajustes y Tolerancias</h1>
+
+        <!-- Sección de Tolerancia Dimensional -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button class="flex justify-between items-center w-full p-5 text-lg font-semibold text-left text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none transition-colors duration-300" onclick="toggleAccordion('tolerancia')">
+                <span>Tolerancia Dimensional</span>
+                <span class="arrow transform transition-transform duration-300 text-gray-500">▼</span>
+            </button>
+            <div id="tolerancia" class="content text-gray-600 bg-white">
+                <p>Se denomina <strong>tolerancia dimensional</strong> a la anchura del intervalo de medidas permitido para una determinada dimensión. Esto asegura la "intercambiabilidad" de elementos análogos, por lo que no es necesario establecer valores exactos para las magnitudes.</p>
+                <p class="mt-4">Cuanto más estrictas sean las tolerancias de fabricación, se requerirán mayores precisiones de medida para la comprobación del cumplimiento de dichas especificaciones.</p>
+            </div>
+        </div>
+
+        <!-- Sección de Ajuste -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button class="flex justify-between items-center w-full p-5 text-lg font-semibold text-left text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none transition-colors duration-300" onclick="toggleAccordion('ajuste')">
+                <span>Ajuste</span>
+                <span class="arrow transform transition-transform duration-300 text-gray-500">▼</span>
+            </button>
+            <div id="ajuste" class="content text-gray-600 bg-white">
+                <p>El <strong>ajuste</strong> es la relación dimensional que se establece entre dos piezas que van a ser acopladas o ensambladas, una vez que se han considerado las tolerancias de fabricación de cada una.</p>
+            </div>
+        </div>
+
+        <!-- Sección de Incertidumbre y Calidad -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button class="flex justify-between items-center w-full p-5 text-lg font-semibold text-left text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none transition-colors duration-300" onclick="toggleAccordion('incertidumbre')">
+                <span>Calidad e Incertidumbre</span>
+                <span class="arrow transform transition-transform duration-300 text-gray-500">▼</span>
+            </button>
+            <div id="incertidumbre" class="content text-gray-600 bg-white">
+                <p>La calidad de una medida está relacionada con el concepto de <strong>"incertidumbre"</strong> y las magnitudes significativas de los productos con las <strong>"tolerancias de fabricación"</strong>.</p>
+            </div>
+        </div>
+
+        <!-- Sección de Tolerancias Geométricas -->
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <button class="flex justify-between items-center w-full p-5 text-lg font-semibold text-left text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none transition-colors duration-300" onclick="toggleAccordion('geometricas')">
+                <span>Tolerancias Geométricas</span>
+                <span class="arrow transform transition-transform duration-300 text-gray-500">▼</span>
+            </button>
+            <div id="geometricas" class="content text-gray-600 bg-white">
+                <p>Las <strong>tolerancias geométricas</strong> deben especificarse solo en aquellos requisitos que afecten a la funcionalidad, intercambiabilidad y posibles aspectos relacionados con la fabricación; de otra manera, los costos de fabricación y verificación sufrirían un aumento innecesario.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /**
+         * Función para alternar la visibilidad de un acordeón.
+         * @param {string} id El ID del contenedor del contenido del acordeón.
+         */
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            const arrow = button.querySelector('.arrow');
+
+            // Alterna la clase 'active' para mostrar/ocultar el contenido
+            content.classList.toggle('active');
+
+            // Alterna la clase 'rotate' para girar la flecha
+            arrow.classList.toggle('rotate');
+
+            // Cierra los otros acordeones
+            const allContent = document.querySelectorAll('.content');
+            allContent.forEach(item => {
+                if (item.id !== id && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    const otherButton = item.previousElementSibling;
+                    const otherArrow = otherButton.querySelector('.arrow');
+                    otherArrow.classList.remove('rotate');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
