@@ -1,0 +1,249 @@
+.sf-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #333;
+ 
+}
+
+.sf-header {
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: linear-gradient(135deg, #031795, #0429c7);
+  border-radius: 8px;
+  color: white;
+}
+
+.sf-main-title {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.sf-subtitle {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.sf-main {
+  padding: 5px;
+}
+
+.sf-intro {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+
+}
+
+.sf-intro-text {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 500;
+  color: #031795;
+  margin: 0;
+  text-align: center;
+}
+
+.sf-factors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sf-factor-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sf-factor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.sf-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  cursor: pointer;
+}
+
+.sf-card-title {
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  font-weight: 600;
+  color: #031795;
+  margin: 0;
+  flex: 1;
+}
+
+.sf-toggle-btn {
+  background: #031795;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.sf-toggle-btn:hover {
+  background: #0429c7;
+  transform: scale(1.1);
+}
+
+.sf-toggle-icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.sf-card-content {
+  padding: 0 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sf-card-content.sf-expanded {
+  max-height: 1000px;
+  padding: 10px;
+}
+
+.sf-list {
+  margin: 0;
+  padding-left: 10px;
+}
+
+.sf-list li {
+  margin-bottom: 8px;
+  font-size: clamp(0.85rem, 2.3vw, 0.95rem);
+  position: relative;
+}
+
+.sf-list li:before {
+  content: '→';
+  color: #031795;
+  font-weight: bold;
+  position: absolute;
+  left: -15px;
+}
+
+.sf-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.sf-btn {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: clamp(0.85rem, 2.3vw, 0.95rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.sf-btn-primary {
+  background: #031795;
+  color: white;
+}
+
+.sf-btn-primary:hover {
+  background: #0429c7;
+  transform: translateY(-1px);
+}
+
+.sf-btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.sf-btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.sf-footer {
+  padding: 10px;
+}
+
+.sf-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.sf-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #031795, #0429c7);
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 4px;
+}
+
+.sf-progress-text {
+  text-align: center;
+  font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  color: #6c757d;
+  margin: 0;
+}
+
+.sf-factor-card.sf-viewed {
+  border-left: 4px solid #031795;
+}
+
+.sf-toggle-btn[aria-expanded="true"] .sf-toggle-icon {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+  .sf-container {
+    padding: 5px;
+  }
+  
+  .sf-factors {
+    grid-template-columns: 1fr;
+  }
+  
+  .sf-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .sf-btn {
+    min-width: auto;
+  }
+}
+
+@media (min-width: 1920px) {
+  .sf-container {
+    max-width: 1400px;
+  }
+  
+  .sf-factors {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
