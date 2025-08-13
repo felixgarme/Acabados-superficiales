@@ -2,9 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- Estilos -->
   <link rel="stylesheet" href="../assets/css/main_ex.css" />
   <link rel="stylesheet" href="../assets/css/sidebar.css" />
@@ -14,13 +13,15 @@
 
   <!-- Scripts -->
   <script src="../js/sidebar.js" defer></script>
-
 </head>
 
 <body>
+    <!-- Botón de retroceso -->
     <button class="back-page-btn" onclick="backPage()">
         <span class="arrow">❮</span>
     </button>
+
+    <!-- Sidebar / Navegación lateral -->
     <nav id="sidebar" class="close">
         <div id="logo-seccion">
             <a href="">
@@ -42,238 +43,265 @@
         <div id="menu-container"></div>
     </nav>
 
+    <!-- Logo inferior -->
+    <div class="logo-container"><img src="../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
 
-  <!-- Logo inferior -->
-  <div class="logo-container"><img src="../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
+    <!-- Título principal -->
+    <header>
+      <h1 class="titulo-epp" style="margin: 40px;"><span class="gradient-text2">Fundamentos de Acabados Superficiales</span></h1>
+    </header>
 
-  <!-- Título principal -->
-  <header><h1 class="titulo-epp" style="margin: 40px;"><span class="gradient-text2">Fundamentos de Acabados Superficiales</span></h1></header>
-
-  <!-- Contenido principal -->
-    <div style="margin-left: 10%; margin-right: 10%;">
+    <!-- Contenido principal -->
+    <main style="margin-left: 10%; margin-right: 10%;">
         <div class="acabados-container">
 
-        <div class="acabados-tabs">
-            <div class="acabados-tab active" data-tab="precision">Alta Precision</div>
-            <div class="acabados-tab" data-tab="estandar">Componentes Estandar</div>
-            <div class="acabados-tab" data-tab="desbaste">Piezas de Desbaste</div>
+            <div class="acabados-tabs">
+                <div class="acabados-tab active" data-tab="precision">Alta Precision</div>
+                <div class="acabados-tab" data-tab="estandar">Componentes Estandar</div>
+                <div class="acabados-tab" data-tab="desbaste">Piezas de Desbaste</div>
+            </div>
+
+            <div class="acabados-content">
+                <div class="acabados-card active" id="precision">
+                    <div class="acabados-section">
+                        <h3 class="acabados-section-title">Componentes de Alta Precision</h3>
+                        <div class="acabados-specs">
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Aplicaciones:</div>
+                                <div class="acabados-spec-value">Turbinas, Instrumentos Medicos</div>
+                            </div>
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Requisitos Ra:</div>
+                                <div class="acabados-spec-value">≤ 0,1 µm (N1–N3)</div>
+                            </div>
+                        </div>
+                        <div class="acabados-processes">
+                            <span class="acabados-process">Lapeado</span>
+                            <span class="acabados-process">Pulido</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="acabados-card" id="estandar">
+                    <div class="acabados-section">
+                        <h3 class="acabados-section-title">Componentes Estandar</h3>
+                        <div class="acabados-specs">
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Aplicaciones:</div>
+                                <div class="acabados-spec-value">Industria Automotriz</div>
+                            </div>
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Clasificacion:</div>
+                                <div class="acabados-spec-value">N5–N7</div>
+                            </div>
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Ra:</div>
+                                <div class="acabados-spec-value">0,2–1,6 µm</div>
+                            </div>
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Componentes:</div>
+                                <div class="acabados-spec-value">Motores y Cajas de Cambio</div>
+                            </div>
+                        </div>
+                        <div class="acabados-processes">
+                            <span class="acabados-process">Rectificado</span>
+                            <span class="acabados-process">Torneado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="acabados-card" id="desbaste">
+                    <div class="acabados-section">
+                        <h3 class="acabados-section-title">Piezas de Desbaste</h3>
+                        <div class="acabados-specs">
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Aplicaciones:</div>
+                                <div class="acabados-spec-value">Piezas de Sujecion y Fundaciones</div>
+                            </div>
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Clasificacion:</div>
+                                <div class="acabados-spec-value">N9–N12</div>
+                            </div>
+                            <div class="acabados-spec-item">
+                                <div class="acabados-spec-label">Ra:</div>
+                                <div class="acabados-spec-value">3,2–50 µm</div>
+                            </div>
+                        </div>
+                        <div class="acabados-processes">
+                            <span class="acabados-process">Fresado Manual</span>
+                            <span class="acabados-process">Desbaste</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acabados-interactive">
+                <div class="acabados-comparison">
+                    <h4>Comparacion de Rugosidad</h4>
+                    <div>Alta Precision (Ra ≤ 0,1 µm)</div>
+                    <div class="acabados-roughness-bar">
+                        <div class="acabados-roughness-fill" style="width: 5%"></div>
+                        <div class="acabados-roughness-label">N1-N3</div>
+                    </div>
+                    <div>Estandar (Ra 0,2-1,6 µm)</div>
+                    <div class="acabados-roughness-bar">
+                        <div class="acabados-roughness-fill" style="width: 35%"></div>
+                        <div class="acabados-roughness-label">N5-N7</div>
+                    </div>
+                    <div>Desbaste (Ra 3,2-50 µm)</div>
+                    <div class="acabados-roughness-bar">
+                        <div class="acabados-roughness-fill" style="width: 85%"></div>
+                        <div class="acabados-roughness-label">N9-N12</div>
+                    </div>
+                </div>
+
+                <div class="acabados-comparison">
+                    <h4>Seleccion por Industria</h4>
+                    <div style="margin: 5px 0; padding: 5px; background: white; border-radius: 4px;">
+                        <strong>Medica/Aeroespacial:</strong> Alta Precision
+                    </div>
+                    <div style="margin: 5px 0; padding: 5px; background: white; border-radius: 4px;">
+                        <strong>Automotriz:</strong> Componentes Estandar
+                    </div>
+                    <div style="margin: 5px 0; padding: 5px; background: white; border-radius: 4px;">
+                        <strong>Construccion:</strong> Piezas de Desbaste
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </main>
 
-        <div class="acabados-content">
-            <div class="acabados-card active" id="precision">
-            <div class="acabados-section">
-                <h3 class="acabados-section-title">Componentes de Alta Precision</h3>
-                <div class="acabados-specs">
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Aplicaciones:</div>
-                    <div class="acabados-spec-value">Turbinas, Instrumentos Medicos</div>
-                </div>
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Requisitos Ra:</div>
-                    <div class="acabados-spec-value">≤ 0,1 µm (N1–N3)</div>
-                </div>
-                </div>
-                <div class="acabados-processes">
-                <span class="acabados-process">Lapeado</span>
-                <span class="acabados-process">Pulido</span>
-                </div>
-            </div>
-            </div>
+    <!-- Botón de continuar -->
+    <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
 
-            <div class="acabados-card" id="estandar">
-            <div class="acabados-section">
-                <h3 class="acabados-section-title">Componentes Estandar</h3>
-                <div class="acabados-specs">
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Aplicaciones:</div>
-                    <div class="acabados-spec-value">Industria Automotriz</div>
-                </div>
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Clasificacion:</div>
-                    <div class="acabados-spec-value">N5–N7</div>
-                </div>
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Ra:</div>
-                    <div class="acabados-spec-value">0,2–1,6 µm</div>
-                </div>
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Componentes:</div>
-                    <div class="acabados-spec-value">Motores y Cajas de Cambio</div>
-                </div>
-                </div>
-                <div class="acabados-processes">
-                <span class="acabados-process">Rectificado</span>
-                <span class="acabados-process">Torneado</span>
-                </div>
-            </div>
-            </div>
+    <!-- Plano (botón) -->
+    <button id="btnPlano" class="start-button pulse" onclick="openImage()" style="margin-right: 220px;">Ver plano</button>
 
-            <div class="acabados-card" id="desbaste">
-            <div class="acabados-section">
-                <h3 class="acabados-section-title">Piezas de Desbaste</h3>
-                <div class="acabados-specs">
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Aplicaciones:</div>
-                    <div class="acabados-spec-value">Piezas de Sujecion y Fundaciones</div>
-                </div>
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Clasificacion:</div>
-                    <div class="acabados-spec-value">N9–N12</div>
-                </div>
-                <div class="acabados-spec-item">
-                    <div class="acabados-spec-label">Ra:</div>
-                    <div class="acabados-spec-value">3,2–50 µm</div>
-                </div>
-                </div>
-                <div class="acabados-processes">
-                <span class="acabados-process">Fresado Manual</span>
-                <span class="acabados-process">Desbaste</span>
-                </div>
-            </div>
-            </div>
-        </div>
 
-        <div class="acabados-interactive">
-            <div class="acabados-comparison">
-            <h4>Comparacion de Rugosidad</h4>
-            <div>Alta Precision (Ra ≤ 0,1 µm)</div>
-            <div class="acabados-roughness-bar">
-                <div class="acabados-roughness-fill" style="width: 5%"></div>
-                <div class="acabados-roughness-label">N1-N3</div>
-            </div>
-            <div>Estandar (Ra 0,2-1,6 µm)</div>
-            <div class="acabados-roughness-bar">
-                <div class="acabados-roughness-fill" style="width: 35%"></div>
-                <div class="acabados-roughness-label">N5-N7</div>
-            </div>
-            <div>Desbaste (Ra 3,2-50 µm)</div>
-            <div class="acabados-roughness-bar">
-                <div class="acabados-roughness-fill" style="width: 85%"></div>
-                <div class="acabados-roughness-label">N9-N12</div>
-            </div>
+    <!-- Componente de imagen a pantalla completa -->
+    <div id="image-overlay" class="overlay">
+        <span class="close-btn" onclick="closeImage()">&times;</span>
+        <img id="fullscreen-img" class="overlay-content" src="../assets/images/plano.jpeg" style="border-radius: 2%;" alt="Plano">
+    </div>
+
+    <!--AUDIOv2-->
+    <div class="audio-control-wrapper" style="z-index: 9999;">
+        <button class="audio-toggle-btn" id="audioToggle">
+            <svg id="togglePlayIcon" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg id="togglePauseIcon" viewBox="0 0 24 24" style="display: none">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+        </button>
+
+        <div class="audio-controls" id="audioControls">
+            <div class="custom-audio-player">
+                <div class="audio-main-controls">
+                    <button class="control-btn volume-btn" id="volumeToggle">
+                        <svg id="volumeIcon" viewBox="0 0 24 24">
+                            <path
+                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                        </svg>
+                        <svg id="muteIcon" viewBox="0 0 24 24" style="display: none">
+                            <path
+                                d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                        </svg>
+                    </button>
+
+                    <button class="control-btn play-pause-btn" id="playPauseBtn">
+                        <svg id="playIcon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                    </button>
+
+                    <button class="control-btn speed-btn" id="speedBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" />
+                            <path
+                                d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-5.66a2 2 0 0 0-2.83-2.83L12 11.17 7.76 6.93a2 2 0 0 0-2.83 2.83l5.66 5.65z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+
+                <div class="volume-control">
+                    <div class="volume-slider" id="volumeSlider">
+                        <div class="volume-fill" id="volumeFill"></div>
+                    </div>
+                    <div class="speed-control">
+                        <span class="speed-display" id="speedDisplay">1x</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="acabados-comparison">
-            <h4>Seleccion por Industria</h4>
-            <div style="margin: 5px 0; padding: 5px; background: white; border-radius: 4px;">
-                <strong>Medica/Aeroespacial:</strong> Alta Precision
-            </div>
-            <div style="margin: 5px 0; padding: 5px; background: white; border-radius: 4px;">
-                <strong>Automotriz:</strong> Componentes Estandar
-            </div>
-            <div style="margin: 5px 0; padding: 5px; background: white; border-radius: 4px;">
-                <strong>Construccion:</strong> Piezas de Desbaste
-            </div>
-            </div>
-        </div>
-
+            <!-- Audio element oculto -->
+            <audio id="audioPlayer" preload="metadata" autoplay>
+                <source src="../assets/audio/M3p3.wav" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+            </audio>
         </div>
     </div>
 
-  
-  <!-- Botón de continuar -->
-  <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+    <!-- Scripts externos -->
+    <script src="../js/audioPlayer.js"></script>
+    <!--///////-->
+    <!-- Scripts funcionales -->
+    <script src="../js/SCORM.js"></script>
+    <script src="../js/M2/M2pg7.js"></script>
 
-  <!--AUDIOv2-->
-  <div class="audio-control-wrapper" style="z-index: 9999;">
-      <button class="audio-toggle-btn" id="audioToggle">
-          <svg id="togglePlayIcon" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-          </svg>
-          <svg id="togglePauseIcon" viewBox="0 0 24 24" style="display: none">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-          </svg>
-      </button>
+    <script>
+      // Navegación
+      function goHome() { window.location.href = 'index.html'; }
+      function backPage() { window.location.href = 'M2_pagina6.html'; }
+      function goToNextPage() { window.location.href = 'M2_pagina8.html'; }
 
-      <div class="audio-controls" id="audioControls">
-          <div class="custom-audio-player">
-              <div class="audio-main-controls">
-                  <button class="control-btn volume-btn" id="volumeToggle">
-                      <svg id="volumeIcon" viewBox="0 0 24 24">
-                          <path
-                              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
-                      </svg>
-                      <svg id="muteIcon" viewBox="0 0 24 24" style="display: none">
-                          <path
-                              d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                      </svg>
-                  </button>
+      ScormManager.init();
+      ScormManager.guardarProgreso("M3_pagina3.html");
 
-                  <button class="control-btn play-pause-btn" id="playPauseBtn">
-                      <svg id="playIcon" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                      </svg>
-                      <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
-                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-                      </svg>
-                  </button>
+      document.addEventListener("DOMContentLoaded", () => {
+        const progreso = ScormManager.cargarProgreso();
+        const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
+        document.getElementById("progreso-barra").style.width = porcentaje + "%";
+        document.getElementById("progreso-texto").textContent = porcentaje + "%";
+      });
+    </script>
 
-                  <button class="control-btn speed-btn" id="speedBtn">
-                      <svg viewBox="0 0 24 24">
-                          <path
-                              d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" />
-                          <path
-                              d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-5.66a2 2 0 0 0-2.83-2.83L12 11.17 7.76 6.93a2 2 0 0 0-2.83 2.83l5.66 5.65z" />
-                      </svg>
-                  </button>
-              </div>
+    <script>
+      fetch("./componentes/M2pg7.html")
+              .then(res => res.text())
+              .then(html => {
+              document.getElementById("info").innerHTML = html;
+      });
+    </script>
+    <script>
+        function openImage() {
+        const overlay = document.getElementById("image-overlay");
+        overlay.classList.add("active");
 
-              <div class="progress-container">
-                  <div class="progress-bar" id="progressBar">
-                      <div class="progress-fill" id="progressFill"></div>
-                  </div>
-                  <div class="time-display">
-                      <span id="currentTime">0:00</span>
-                      <span id="duration">0:00</span>
-                  </div>
-              </div>
+        // Detener animación del botón
+        document.getElementById("btnPlano").classList.remove("pulse");
+        }
 
-              <div class="volume-control">
-                  <div class="volume-slider" id="volumeSlider">
-                      <div class="volume-fill" id="volumeFill"></div>
-                  </div>
-                  <div class="speed-control">
-                      <span class="speed-display" id="speedDisplay">1x</span>
-                  </div>
-              </div>
-          </div>
+        function closeImage() {
+        const overlay = document.getElementById("image-overlay");
+        overlay.classList.remove("active");
+        }
 
-          <!-- Audio element oculto -->
-          <audio id="audioPlayer" preload="metadata" autoplay>
-              <source src="../assets/audio/M3p3.wav" type="audio/mp3" />
-              Tu navegador no soporta el elemento de audio.
-          </audio>
-      </div>
-  </div>
-
-  <script src="../js/audioPlayer.js"></script>
-  <!--///////-->
-  <!-- Scripts funcionales -->
-  <script src="../js/SCORM.js"></script>
-  <script src="../js/M2/M2pg7.js"></script>
-  <script>
-    // Navegación
-    function goHome() { window.location.href = 'index.html'; }
-    function backPage() { window.location.href = 'M2_pagina6.html'; }
-    function goToNextPage() { window.location.href = 'M2_pagina8.html'; }
-
-    ScormManager.init();
-    ScormManager.guardarProgreso("M3_pagina3.html");
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const progreso = ScormManager.cargarProgreso();
-      const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
-      document.getElementById("progreso-barra").style.width = porcentaje + "%";
-      document.getElementById("progreso-texto").textContent = porcentaje + "%";
-    });
-  </script>
-  <script>
-    fetch("./componentes/M2pg7.html")
-            .then(res => res.text())
-            .then(html => {
-            document.getElementById("info").innerHTML = html;
-    });
-  </script>
-
+    </script>
 </body>
 </html>
