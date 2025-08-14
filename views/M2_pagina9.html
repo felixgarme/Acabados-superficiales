@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/sidebar.css" />
   <link rel="stylesheet" href="../assets/css/ProgressBar.css" />
   <link rel="stylesheet" href="../assets/css/ex1.css" />
-  <link rel="stylesheet" href="../assets/css/M2/M2pg8.css" />
+  <link rel="stylesheet" href="../assets/css/M2/M2pg9.css" />
 
 
   <!-- Scripts -->
@@ -48,120 +48,184 @@
   <div class="logo-container"><img src="../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
 
   <!-- Título principal -->
-  <header><h1 class="titulo-epp" style="margin-bottom: 10px;"><span class="gradient-text2">Obtención de clase según proceso – Introducción</span></h1></header>
+  <header><h1 class="titulo-epp" style="margin: 40px;"><span class="gradient-text2">Fundamentos de Acabados Superficiales</span></h1></header>
 
   <!-- Contenido principal -->
   <div id="" class="container" style="margin-left: 10%; margin-right: 10%;">
-    <section class="contenido-principal">
-        <div class="intro-card">
-        <p class="subtitulo" style="color: #031795;">Fundamentos de Acabados Superficiales</p>
-        <p class="descripcion">
-            La rugosidad característica de cada proceso de fabricación permite estimar la clase ISO antes de la medición.
-        </p>
-        </div>
 
-        <div class="factores-section">
-        <h2 class="seccion-titulo">Factores clave por proceso:</h2>
-        <div class="factores-grid">
-            <div class="factor-card" data-factor="velocidad">
-            <h3>Velocidad de corte</h3>
-            
-            </div>
-            <div class="factor-card" data-factor="avance">
-            <h3>Avance (feed)</h3>
-            
-            </div>
-            <div class="factor-card" data-factor="geometria">
-            <h3>Geometría de la herramienta</h3>
-            
-            </div>
-            <div class="factor-card" data-factor="estado">
-            <h3>Estado de la máquina</h3>
-            <p class="factor-detalle">(vibraciones, holguras)</p>
-            
-            </div>
-        </div>
-        </div>
+    <div class="acabados-container">
+    <!-- Navigation -->
+    <nav class="acabados-nav">
+        <button class="nav-btn active" data-section="rectificado">Rectificado</button>
+        <button class="nav-btn" data-section="pulido">Pulido y Lapeado</button>
+        <button class="nav-btn" data-section="chorreado">Chorreado</button>
+        <button class="nav-btn" data-section="recubrimientos">Recubrimientos</button>
+    </nav>
 
-        <div class="metodologia-section">
-        <h2 class="seccion-titulo">Metodología:</h2>
-        <div class="metodologia-steps">
-            <div class="step-card active" data-step="1">
-            <div class="step-numero">1</div>
-            <div class="step-contenido">
-                <h4>Seleccionar parámetros</h4>
-                <p>Seleccionar parámetros de corte según material y proceso</p>
+    <!-- Main Content -->
+    <main class="acabados-main">
+        <!-- Section: Rectificado -->
+        <section class="content-section active" id="rectificado">
+        <h1 class="section-title">Proceso de Rectificado</h1>
+      
+        
+        <div class="content-grid">
+            <div class="info-card">
+            <h3>Granulometría y Textura</h3>
+            <div class="parameter-item">
+                <strong>Muela fina (120-240):</strong> Ra ≤ 0,2 μm (N4-N5)
+            </div>
+            <div class="parameter-item">
+                <strong>Muela media (60-100):</strong> Ra 0,4-0,8 μm (N6)
             </div>
             </div>
-            <div class="step-card" data-step="2">
-            <div class="step-numero">2</div>
-            <div class="step-contenido">
-                <h4>Comparar Ra teórica</h4>
-                <p>Comparar Ra teórica con tabla de clases ISO (N1–N12)</p>
-            </div>
-            </div>
-            <div class="step-card" data-step="3">
-            <div class="step-numero">3</div>
-            <div class="step-contenido">
-                <h4>Ajustar condiciones</h4>
-                <p>Ajustar condiciones para optimizar ciclo y calidad</p>
-            </div>
-            </div>
-        </div>
-        </div>
 
-        <div class="controles-section">
-        <button class="btn-primario" id="btn-simulacion">Iniciar Simulación</button>
-        <button class="btn-secundario" id="btn-tabla">Ver Tabla ISO</button>
-        </div>
+            <div class="info-card">
+            <h3>Variables Críticas</h3>
+            <div class="parameter-item">
+                <strong>Profundidad (ae):</strong> < 10 μm
+            </div>
+            <div class="parameter-item">
+                <strong>Velocidad alimentación (vf):</strong> 5-20 mm/min
+            </div>
+            </div>
 
-        <div class="modal-overlay" id="modal-tabla">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h3>Clases ISO de Rugosidad</h3>
-            <button class="btn-cerrar" id="btn-cerrar-modal">&times;</button>
+            <div class="info-card acabados-card-featured">
+            <h3>Buenas Prácticas</h3>
+            <ul class="practices-list">
+                <li>Balance de muela para reducir vibraciones</li>
+                <li>Control de temperatura con refrigerante</li>
+            </ul>
             </div>
-            <div class="modal-body">
-            <div class="tabla-iso">
-                <div class="tabla-row header">
-                <div class="tabla-cell">Clase</div>
-                <div class="tabla-cell">Ra (μm)</div>
-                <div class="tabla-cell">Aplicación típica</div>
-                </div>
-                <div class="tabla-row">
-                <div class="tabla-cell">N1</div>
-                <div class="tabla-cell">0.025</div>
-                <div class="tabla-cell">Superficies ópticas</div>
-                </div>
-                <div class="tabla-row">
-                <div class="tabla-cell">N4</div>
-                <div class="tabla-cell">0.2</div>
-                <div class="tabla-cell">Ajustes precisos</div>
-                </div>
-                <div class="tabla-row">
-                <div class="tabla-cell">N7</div>
-                <div class="tabla-cell">1.6</div>
-                <div class="tabla-cell">Mecanizado fino</div>
-                </div>
-                <div class="tabla-row">
-                <div class="tabla-cell">N9</div>
-                <div class="tabla-cell">6.3</div>
-                <div class="tabla-cell">Mecanizado normal</div>
-                </div>
-                <div class="tabla-row">
-                <div class="tabla-cell">N12</div>
-                <div class="tabla-cell">50</div>
-                <div class="tabla-cell">Desbaste</div>
-                </div>
+        </div>
+        </section>
+
+        <!-- Section: Pulido y Lapeado -->
+        <section class="content-section" id="pulido">
+        <h1 class="section-title">Proceso de Pulido y Lapeado</h1>
+    
+        
+        <div class="content-grid">
+            <div class="info-card">
+            <h3>Pulido</h3>
+            <div class="parameter-item">
+                <strong>Abrasivos:</strong> Pastas diamantadas
+            </div>
+            <div class="parameter-item">
+                <strong>Ra:</strong> 0,01-0,1 μm
+            </div>
+            <div class="parameter-item">
+                <strong>Velocidad:</strong> 1000-3000 rpm
+            </div>
+            <div class="parameter-item">
+                <strong>Fuerza:</strong> Homogénea
+            </div>
+            </div>
+
+            <div class="info-card">
+            <h3>Lapeado</h3>
+            <div class="parameter-item">
+                <strong>Método:</strong> Superficies planas + abrasivo
+            </div>
+            <div class="parameter-item">
+                <strong>Ra:</strong> < 0,02 μm
+            </div>
+            <div class="parameter-item">
+                <strong>Presión:</strong> < 1 MPa
+            </div>
+            </div>
+
+            <div class="info-card acabados-card-featured">
+            <h3>Aplicaciones</h3>
+            <ul class="practices-list">
+                <li>Óptica de precisión</li>
+                <li>Hidráulica de alta precisión</li>
+            </ul>
+            </div>
+        </div>
+        </section>
+
+        <!-- Section: Chorreado -->
+        <section class="content-section" id="chorreado">
+        <h1 class="section-title">Proceso de Chorreado y Shot Peening</h1>
+
+        
+        <div class="content-grid">
+            <div class="info-card">
+            <h3>Proceso</h3>
+            <p>Proyección de granalla (esferas metálicas) sobre la superficie</p>
+            </div>
+
+            <div class="info-card">
+            <h3>Efectos</h3>
+            <div class="parameter-item">
+                <strong>Endurecimiento superficial:</strong> Mejora resistencia a fatiga
+            </div>
+            <div class="parameter-item">
+                <strong>Ra final:</strong> 0,8-3 μm
+            </div>
+            </div>
+
+            <div class="info-card acabados-card-featured">
+            <h3>Parámetros Críticos</h3>
+            <div class="parameter-item">
+                <strong>Diámetro granalla:</strong> 0,2-1 mm
+            </div>
+            <div class="parameter-item">
+                <strong>Presión:</strong> 4-7 bar
+            </div>
+            <div class="parameter-item">
+                <strong>Tiempo:</strong> Controlado
             </div>
             </div>
         </div>
+        </section>
+
+        <!-- Section: Recubrimientos -->
+        <section class="content-section" id="recubrimientos">
+        <h1 class="section-title">Proceso de Recubrimientos Funcionales</h1>
+   
+        
+        <div class="content-grid">
+            <div class="info-card">
+            <h3>Tipos de Revestimientos</h3>
+            <ul class="practices-list">
+                <li>Cromo duro</li>
+                <li>Nitruro de titanio (TiN)</li>
+                <li>DLC (Diamond-Like Carbon)</li>
+            </ul>
+            </div>
+
+            <div class="info-card">
+            <h3>Beneficios</h3>
+            <div class="parameter-item">
+                <strong>Reducción Ra:</strong> Hasta 0,05 μm
+            </div>
+            <div class="parameter-item">
+                <strong>Propiedades tribológicas:</strong> Menos fricción y desgaste
+            </div>
+            </div>
+
+            <div class="info-card acabados-card-featured">
+            <h3>Parámetros de Aplicación</h3>
+            <div class="parameter-item">
+                <strong>Grosor:</strong> 1-10 μm
+            </div>
+            <div class="parameter-item">
+                <strong>Temperatura DLC:</strong> < 200°C
+            </div>
+            <div class="parameter-item">
+                <strong>Compatibilidad:</strong> Recubrimiento-sustrato
+            </div>
+            </div>
         </div>
-    </section>
+        </section>
+    </main>
     </div>
 
   </div>
 
+  
   <!-- Botón de continuar -->
   <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
 
@@ -241,15 +305,15 @@
   <!--///////-->
   <!-- Scripts funcionales -->
   <script src="../js/SCORM.js"></script>
-  <script src="../js/M2/M2pg8.js"></script>
+  <script src="../js/M2/M2pg9.js"></script>
   <script>
     // Navegación
     function goHome() { window.location.href = 'index.html'; }
-    function backPage() { window.location.href = 'M2_pagina7.html'; }
-    function goToNextPage() { window.location.href = 'M2_pagina9.html'; }
+    function backPage() { window.location.href = 'M2_pagina8.html'; }
+    function goToNextPage() { window.location.href = 'M2_pagina10.html'; }
 
     ScormManager.init();
-    ScormManager.guardarProgreso("M2_pagina8.html");
+    ScormManager.guardarProgreso("M2_pagina9.html");
 
     document.addEventListener("DOMContentLoaded", () => {
       const progreso = ScormManager.cargarProgreso();
@@ -258,8 +322,6 @@
       document.getElementById("progreso-texto").textContent = porcentaje + "%";
     });
   </script>
-
-
 
 </body>
 </html>

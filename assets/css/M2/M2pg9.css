@@ -1,0 +1,249 @@
+.acabados-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 8px;
+
+}
+
+.acabados-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+
+}
+
+.nav-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 10px;
+  border: 2px solid #031795;
+  background: white;
+  color: #031795;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #f0f4ff;
+  transform: translateY(-1px);
+}
+
+.nav-btn.active {
+  background: #031795;
+  color: white;
+  box-shadow: 0 4px 8px rgba(3, 23, 149, 0.3);
+}
+
+.acabados-main {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+
+}
+
+.content-section {
+  display: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.content-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+  color: #031795;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-align: center;
+  border-bottom: 3px solid #031795;
+  padding-bottom: 8px;
+}
+
+.section-subtitle {
+  color: #6c757d;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.info-card {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.acabados-card-featured {
+  background: linear-gradient(135deg, #031795 0%, #0056b3 100%);
+  color: white;
+  border: none;
+}
+
+.info-card h3 {
+  color: #031795;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  border-bottom: 2px solid #031795;
+  padding-bottom: 4px;
+}
+
+.acabados-card-featured h3 {
+  color: white;
+  border-bottom-color: white;
+}
+
+.parameter-item {
+  background: white;
+  border-left: 4px solid #031795;
+  padding: 6px 8px;
+  margin: 6px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+}
+
+.acabados-card-featured .parameter-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: white;
+  color: white;
+}
+
+.practices-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.practices-list li {
+  background: white;
+  border-left: 4px solid #031795;
+  padding: 6px 8px;
+  margin: 6px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+  position: relative;
+}
+
+.practices-list li::before {
+  content: '→';
+  color: #031795;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.acabados-card-featured .practices-list li {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: white;
+  color: white;
+}
+
+.acabados-card-featured .practices-list li::before {
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .acabados-container {
+    padding: 8px;
+    margin-bottom: 70px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+  }
+  
+  .section-subtitle {
+    font-size: 16px;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-btn {
+    font-size: 12px;
+    padding: 6px 8px;
+    min-width: 100px;
+  }
+  
+  .info-card {
+    padding: 8px;
+  }
+  
+  .parameter-item, .practices-list li {
+    font-size: 13px;
+    padding: 4px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .acabados-nav {
+    flex-direction: column;
+    margin-bottom: 70px;
+  }
+  
+  .nav-btn {
+    min-width: unset;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+  
+  .section-subtitle {
+    font-size: 14px;
+  }
+}
+
+/* High Definition Screens */
+@media (min-width: 1920px) {
+  .acabados-container {
+    max-width: 1400px;
+  }
+  
+  .section-title {
+    font-size: 32px;
+  }
+  
+  .section-subtitle {
+    font-size: 20px;
+  }
+  
+  .content-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 15px;
+  }
+  
+  .info-card {
+    padding: 15px;
+  }
+}
