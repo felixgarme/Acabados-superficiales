@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../assets/css/main_ex.css" />
+  <link rel="stylesheet" href="../assets/css/sidebar.css" />
+  <link rel="stylesheet" href="../assets/css/ProgressBar.css" />
+  <link rel="stylesheet" href="../assets/css/ex1.css" />
+  <link rel="stylesheet" href="../assets/css/M2/M2pg9.css" />
+
+
+  <!-- Scripts -->
+  <script src="../js/sidebar.js" defer></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <button class="back-page-btn" onclick="backPage()">
+        <span class="arrow">❮</span>
+    </button>
+    <nav id="sidebar" class="close">
+        <div id="logo-seccion">
+            <a href="">
+                <img src="../assets/images/logo_blanco.png" height="10px" alt="logo">
+            </a>
+            <button id="toggle-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+            </button>
+        </div>
+        <div id="barra">
+            <span id="barra-titulo"><strong>Progreso del Curso</strong></span>
+            <div id="progreso-container">
+                <div id="progreso-barra"></div>
+                <span id="progreso-texto">0%</span>
+            </div>
+        </div>
+        <div id="menu-container"></div>
+    </nav>
+
+
+  <!-- Logo inferior -->
+  <div class="logo-container"><img src="../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
+
+  <!-- Título principal -->
+  <header><h1 class="titulo-epp" style="margin: 40px;"><span class="gradient-text2">Calculadora de Función de Supervivencia S(t)</span></h1></header>
+
+  <!-- Contenido principal -->
+  <div id="info" class="container" style="margin-left: 10%; margin-right: 10%;">
+
+    <div class="mecanizado-container">
+      <div class="header-section">
+        <img src="../assets/images/ejer2.png" alt="Plano técnico del eje de bomba con secciones marcadas" class="process-image" onclick="openFullscreen(this)">
+        <div class="header-text">
+          <h1 class="main-title">Mecanizado de Acabado</h1>
+          <p class="instructions">Analice el plano técnico mostrado a la izquierda. Seleccione el tipo de mecanizado de acabado para las secciones marcadas en el siguiente plano, seguidamente escriba el rango de en μm en el que se deben de encontrar.</p>
+        </div>
+      </div>
+
+      <div class="exercise-section">
+        <div class="pump-axis-section">
+          <h2 class="section-title">Eje de bomba (A):</h2>
+          
+          <div class="input-group">
+            <label class="input-label">Acabado superficial mínimo:</label>
+            <div class="input-container">
+              <input type="number" id="acabadoA1" class="roughness-input" step="0.1" placeholder="0.2">
+              <span class="unit">μm</span>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <label class="input-label">Acabado superficial mínimo:</label>
+            <div class="input-container">
+              <input type="number" id="acabadoA2" class="roughness-input" step="0.1" placeholder="0.4">
+              <span class="unit">μm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pump-axis-section">
+          <h2 class="section-title">Eje de bomba (B):</h2>
+          
+          <div class="input-group">
+            <label class="input-label">Acabado superficial mínimo:</label>
+            <div class="input-container">
+              <input type="number" id="acabadoB1" class="roughness-input" step="0.1" placeholder="0.4">
+              <span class="unit">μm</span>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <label class="input-label">Acabado superficial mínimo:</label>
+            <div class="input-container">
+              <input type="number" id="acabadoB2" class="roughness-input" step="0.1" placeholder="0.8">
+              <span class="unit">μm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-section">
+          <h2 class="section-title">Proceso de mecanizado de acabado final</h2>
+          <div class="process-buttons">
+            <button class="process-btn" data-process="rectificado">Rectificado fino</button>
+            <button class="process-btn active" data-process="torneado">Torneado fino</button>
+            <button class="process-btn" data-process="fresado">Fresado</button>
+            <button class="process-btn" data-process="taladrado">Taladrado</button>
+          </div>
+        </div>
+
+        <div class="results-section">
+          <div class="feedback" id="feedback"></div>
+          <button class="check-btn" onclick="checkAnswers()">Verificar Respuestas</button>
+          <button class="reset-btn" onclick="resetExercise()">Reiniciar</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+    .mecanizado-container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 10px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .header-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 0 10px 0;
+      gap: 10px;
+    }
+
+    @media (min-width: 769px) {
+      .header-section {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+      }
+      
+      .header-text {
+        flex: 1;
+      }
+      
+      .process-image {
+        flex-shrink: 0;
+        margin: 0 10px 0 0;
+      }
+    }
+
+    .process-image {
+      width: 100%;
+      max-width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0 0 10px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .process-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(3, 23, 149, 0.3);
+    }
+
+    .process-image::after {
+      content: '🔍';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(3, 23, 149, 0.8);
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .process-image:hover::after {
+      opacity: 1;
+    }
+
+    .main-title {
+      color: #031795;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .instructions {
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0 0 10px 0;
+      padding: 0 10px;
+    }
+
+    .exercise-section {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 0 0 10px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .pump-axis-section {
+      background: #e3f2fd;
+      padding: 10px;
+      border-radius: 6px;
+      margin: 0 0 10px 0;
+      border-left: 4px solid #031795;
+    }
+
+    .section-title {
+      color: #031795;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 10px 0;
+    }
+
+    .input-group {
+      margin: 0 0 8px 0;
+    }
+
+    .input-label {
+      display: block;
+      color: #555;
+      font-weight: 500;
+      margin: 0 0 5px 0;
+      font-size: 0.9rem;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .roughness-input {
+      flex: 1;
+      padding: 8px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .roughness-input:focus {
+      outline: none;
+      border-color: #031795;
+      box-shadow: 0 0 0 3px rgba(3, 23, 149, 0.1);
+    }
+
+    .unit {
+      font-weight: bold;
+      color: #031795;
+      min-width: 25px;
+    }
+
+    .process-section {
+      margin: 10px 0;
+    }
+
+    .process-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    .process-btn {
+      padding: 10px 8px;
+      border: 2px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .process-btn:hover {
+      background: #f0f0f0;
+      border-color: #031795;
+      transform: translateY(-2px);
+    }
+
+    .process-btn.active {
+      background: #031795;
+      color: white;
+      border-color: #031795;
+    }
+
+    .results-section {
+      text-align: center;
+      margin: 10px 0 0 0;
+    }
+
+    .check-btn {
+      background: #031795;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 5px 10px 5px;
+      transition: all 0.3s ease;
+    }
+
+    .check-btn:hover {
+      background: #024a7a;
+      transform: translateY(-2px);
+    }
+
+    .reset-btn {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 5px 10px 5px;
+      transition: all 0.3s ease;
+    }
+
+    .reset-btn:hover {
+      background: #545b62;
+      transform: translateY(-2px);
+    }
+
+    .feedback {
+      margin: 0 0 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 500;
+      min-height: 20px;
+    }
+
+    .feedback.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .feedback.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-section {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+      }
+      
+      .header-text {
+        text-align: center;
+      }
+      
+      .process-image {
+        margin: 0 0 10px 0 !important;
+      }
+      
+      .instructions {
+        text-align: center;
+      }
+      
+      .main-title {
+        font-size: 1.5rem;
+      }
+      
+      .instructions {
+        font-size: 0.9rem;
+      }
+      
+      .process-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .input-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+      }
+      
+      .unit {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-text .instructions {
+        text-align: center;
+      }
+      
+      .mecanizado-container {
+        padding: 8px;
+      }
+      
+      .exercise-section {
+        padding: 8px;
+      }
+      
+      .pump-axis-section {
+        padding: 8px;
+      }
+      
+      .process-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .check-btn, .reset-btn {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+
+    @media (min-width: 1920px) {
+      .mecanizado-container {
+        max-width: 1400px;
+      }
+      
+      .main-title {
+        font-size: 2.5rem;
+      }
+      
+      .instructions {
+        font-size: 1.1rem;
+      }
+    }
+
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      animation: fadeInOverlay 0.3s ease forwards;
+    }
+
+    @keyframes fadeInOverlay {
+      to { opacity: 1; }
+    }
+
+    .fullscreen-image {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    .fullscreen-instructions {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0.7; }
+      to { opacity: 1; }
+    }
+    </style>
+
+    <script>
+    let selectedProcess = 'torneado';
+
+    // Initialize the component
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeComponent();
+    });
+
+    function initializeComponent() {
+      // Add event listeners to process buttons
+      const processButtons = document.querySelectorAll('.process-btn');
+      processButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          selectProcess(this.dataset.process);
+        });
+      });
+      
+      // Add input validation
+      const inputs = document.querySelectorAll('.roughness-input');
+      inputs.forEach(input => {
+        input.addEventListener('input', validateInput);
+      });
+    }
+
+    function selectProcess(process) {
+      selectedProcess = process;
+      
+      // Update button states
+      const buttons = document.querySelectorAll('.process-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      const selectedButton = document.querySelector(`[data-process="${process}"]`);
+      if (selectedButton) {
+        selectedButton.classList.add('active');
+      }
+    }
+
+    function validateInput(event) {
+      const input = event.target;
+      const value = parseFloat(input.value);
+      
+      if (value < 0) {
+        input.value = 0;
+      } else if (value > 100) {
+        input.value = 100;
+      }
+    }
+
+    function checkAnswers() {
+      const acabadoA1 = parseFloat(document.getElementById('acabadoA1').value);
+      const acabadoA2 = parseFloat(document.getElementById('acabadoA2').value);
+      const acabadoB1 = parseFloat(document.getElementById('acabadoB1').value);
+      const acabadoB2 = parseFloat(document.getElementById('acabadoB2').value);
+      const feedback = document.getElementById('feedback');
+      
+      let isCorrect = true;
+      let messages = [];
+      
+      // Check roughness values for Eje A
+      const correctRangesA = {
+        acabadoA1: { min: 0.1, max: 0.4, ideal: 0.2 },
+        acabadoA2: { min: 0.2, max: 0.8, ideal: 0.4 }
+      };
+      
+      // Check roughness values for Eje B
+      const correctRangesB = {
+        acabadoB1: { min: 0.2, max: 0.8, ideal: 0.4 },
+        acabadoB2: { min: 0.4, max: 1.6, ideal: 0.8 }
+      };
+      
+      if (isNaN(acabadoA1) || acabadoA1 < correctRangesA.acabadoA1.min || acabadoA1 > correctRangesA.acabadoA1.max) {
+        isCorrect = false;
+        messages.push(`Eje A - Primer acabado: el valor debe estar entre ${correctRangesA.acabadoA1.min} y ${correctRangesA.acabadoA1.max} μm`);
+      }
+      
+      if (isNaN(acabadoA2) || acabadoA2 < correctRangesA.acabadoA2.min || acabadoA2 > correctRangesA.acabadoA2.max) {
+        isCorrect = false;
+        messages.push(`Eje A - Segundo acabado: el valor debe estar entre ${correctRangesA.acabadoA2.min} y ${correctRangesA.acabadoA2.max} μm`);
+      }
+      
+      if (isNaN(acabadoB1) || acabadoB1 < correctRangesB.acabadoB1.min || acabadoB1 > correctRangesB.acabadoB1.max) {
+        isCorrect = false;
+        messages.push(`Eje B - Primer acabado: el valor debe estar entre ${correctRangesB.acabadoB1.min} y ${correctRangesB.acabadoB1.max} μm`);
+      }
+      
+      if (isNaN(acabadoB2) || acabadoB2 < correctRangesB.acabadoB2.min || acabadoB2 > correctRangesB.acabadoB2.max) {
+        isCorrect = false;
+        messages.push(`Eje B - Segundo acabado: el valor debe estar entre ${correctRangesB.acabadoB2.min} y ${correctRangesB.acabadoB2.max} μm`);
+      }
+      
+      // Check selected process (torneado fino is the correct answer)
+      if (selectedProcess !== 'torneado') {
+        isCorrect = false;
+        messages.push('El proceso correcto para estos ejes de bomba es torneado fino');
+      }
+      
+      // Display feedback
+      if (isCorrect) {
+        feedback.className = 'feedback success';
+        feedback.textContent = '¡Excelente! Sus respuestas son correctas. Los valores de rugosidad y el proceso de torneado fino son apropiados para ambos ejes de bomba.';
+        
+        // Add animation effect
+        feedback.style.animation = 'pulse 0.5s ease-in-out';
+        setTimeout(() => {
+          if (feedback.style) feedback.style.animation = '';
+        }, 500);
+      } else {
+        feedback.className = 'feedback error';
+        feedback.textContent = 'Revise sus respuestas: ' + messages.join('. ');
+      }
+    }
+
+    function resetExercise() {
+      // Reset inputs
+      document.getElementById('acabadoA1').value = '';
+      document.getElementById('acabadoA2').value = '';
+      document.getElementById('acabadoB1').value = '';
+      document.getElementById('acabadoB2').value = '';
+      
+      // Reset process selection to default
+      selectProcess('torneado');
+      
+      // Clear feedback
+      const feedback = document.getElementById('feedback');
+      feedback.className = 'feedback';
+      feedback.textContent = '';
+      
+      // Add reset animation
+      const container = document.querySelector('.mecanizado-container');
+      container.style.animation = 'fadeIn 0.3s ease-in-out';
+      setTimeout(() => {
+        if (container.style) container.style.animation = '';
+      }, 300);
+    }
+
+    function openFullscreen(img) {
+      // Create fullscreen overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'fullscreen-overlay';
+      
+      // Create fullscreen image
+      const fullscreenImg = document.createElement('img');
+      fullscreenImg.src = img.src;
+      fullscreenImg.alt = img.alt;
+      fullscreenImg.className = 'fullscreen-image';
+      
+      // Create close button
+      const closeBtn = document.createElement('div');
+      closeBtn.className = 'close-btn';
+      closeBtn.innerHTML = '×';
+      closeBtn.onclick = closeFullscreen;
+      
+      // Create instructions
+      const instructions = document.createElement('div');
+      instructions.className = 'fullscreen-instructions';
+      instructions.innerHTML = 'Haga clic en × para cerrar o presione ESC';
+      
+      // Add elements to overlay
+      overlay.appendChild(fullscreenImg);
+      overlay.appendChild(closeBtn);
+      overlay.appendChild(instructions);
+      
+      // Add overlay to document
+      document.body.appendChild(overlay);
+      
+      // Prevent body scrolling
+      document.body.style.overflow = 'hidden';
+      
+      // Close on overlay click (but not on image click)
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          closeFullscreen();
+        }
+      });
+      
+      // Close on ESC key
+      document.addEventListener('keydown', handleEscKey);
+    }
+
+    function closeFullscreen() {
+      const overlay = document.querySelector('.fullscreen-overlay');
+      if (overlay) {
+        // Add fade out animation
+        overlay.style.animation = 'fadeOut 0.3s ease forwards';
+        
+        setTimeout(() => {
+          overlay.remove();
+          document.body.style.overflow = 'auto';
+          document.removeEventListener('keydown', handleEscKey);
+        }, 300);
+      }
+    }
+
+    function handleEscKey(e) {
+      if (e.key === 'Escape') {
+        closeFullscreen();
+      }
+    }
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+    </script></div>
+
+  </div>
+
+  
+  <!-- Botón de continuar -->
+  <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+
+  <!--AUDIOv2-->
+  <div class="audio-control-wrapper" style="z-index: 9999;">
+      <button class="audio-toggle-btn" id="audioToggle">
+          <svg id="togglePlayIcon" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+          </svg>
+          <svg id="togglePauseIcon" viewBox="0 0 24 24" style="display: none">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+      </button>
+
+      <div class="audio-controls" id="audioControls">
+          <div class="custom-audio-player">
+              <div class="audio-main-controls">
+                  <button class="control-btn volume-btn" id="volumeToggle">
+                      <svg id="volumeIcon" viewBox="0 0 24 24">
+                          <path
+                              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                      </svg>
+                      <svg id="muteIcon" viewBox="0 0 24 24" style="display: none">
+                          <path
+                              d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                      </svg>
+                  </button>
+
+                  <button class="control-btn play-pause-btn" id="playPauseBtn">
+                      <svg id="playIcon" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                      </svg>
+                  </button>
+
+                  <button class="control-btn speed-btn" id="speedBtn">
+                      <svg viewBox="0 0 24 24">
+                          <path
+                              d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" />
+                          <path
+                              d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-5.66a2 2 0 0 0-2.83-2.83L12 11.17 7.76 6.93a2 2 0 0 0-2.83 2.83l5.66 5.65z" />
+                      </svg>
+                  </button>
+              </div>
+
+              <div class="progress-container">
+                  <div class="progress-bar" id="progressBar">
+                      <div class="progress-fill" id="progressFill"></div>
+                  </div>
+                  <div class="time-display">
+                      <span id="currentTime">0:00</span>
+                      <span id="duration">0:00</span>
+                  </div>
+              </div>
+
+              <div class="volume-control">
+                  <div class="volume-slider" id="volumeSlider">
+                      <div class="volume-fill" id="volumeFill"></div>
+                  </div>
+                  <div class="speed-control">
+                      <span class="speed-display" id="speedDisplay">1x</span>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Audio element oculto -->
+          <audio id="audioPlayer" preload="metadata" autoplay>
+              <source src="../assets/audio/M3p3.wav" type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+          </audio>
+      </div>
+  </div>
+
+  <script src="../js/audioPlayer.js"></script>
+  <!--///////-->
+  <!-- Scripts funcionales -->
+  <script src="../js/SCORM.js"></script>
+  <script src="../js/M2/M2pg7.js"></script>
+  <script>
+    // Navegación
+    function goHome() { window.location.href = 'index.html'; }
+    function backPage() { window.location.href = 'M2_pagina8.html'; }
+    function goToNextPage() { window.location.href = 'M3_pagina10.html'; }
+
+    ScormManager.init();
+    ScormManager.guardarProgreso("M2_pagina9.html");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const progreso = ScormManager.cargarProgreso();
+      const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
+      document.getElementById("progreso-barra").style.width = porcentaje + "%";
+      document.getElementById("progreso-texto").textContent = porcentaje + "%";
+    });
+  </script>
+
+</body>
+</html>
