@@ -85,11 +85,7 @@
   border: 2px solid transparent;
 }
 
-.factor-card:hover {
-  transform: translateY(-2px);
-  border-color: #031795;
-  box-shadow: 0 4px 12px rgba(3,23,149,0.2);
-}
+
 
 .factor-card h3 {
   color: #333;

@@ -207,8 +207,10 @@
       border-radius: 8px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.3);
       z-index: 1000;
-      max-width: 90%;
-      max-height: 80%;
+      max-width: 100%;
+      max-height: 100%;
+      width: 400px;
+      height: 250px;
       overflow-y: auto;
       display: none;
     }
@@ -230,10 +232,27 @@
       color: white;
       border: none;
       padding: 3px 6px;
-      border-radius: 3px;
+      border-radius:100%;
       cursor: pointer;
       font-size: 0.8rem;
     }
+
+    #popupContent ul{
+      font-size:1.2rem ;
+      margin-left: 15%;
+      margin-top: 4%;
+    }
+    #popupContent strong{
+      font-size:1.2rem ;
+      margin-left: 6%;
+      margin-top: 3%;
+      color: #031695b5;
+    }
+    #popupContent h3{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
 
     @media (min-width: 768px) {
       .content-sections {
