@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../assets/css/main_ex.css" />
+    <link rel="stylesheet" href="../assets/css/sidebar.css" />
+    <link rel="stylesheet" href="../assets/css/ProgressBar.css" />
+    <link rel="stylesheet" href="../assets/css/M1_pagina4.css" />
+    <link rel="stylesheet" href="../assets/css/Funciones de supervivencia R(t)/exm3.css" />
+
+
+    <!-- Scripts -->
+    <script src="../js/sidebar.js" defer></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-floating">
+        <div class="floating-container">
+            <button class="floating-trigger">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+            </button>
+            <div class="floating-menu">
+                <button class="floating-item" onclick="goHome()" title="Página Principal">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                </button>
+                <button class="floating-item" onclick="goBack()" title="Retroceder">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="audio-control-wrapper">
+        <button class="audio-toggle-btn" id="audioToggle">
+            <svg id="togglePlayIcon" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg id="togglePauseIcon" viewBox="0 0 24 24" style="display: none">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+        </button>
+
+        <div class="audio-controls" id="audioControls">
+            <div class="custom-audio-player">
+                <div class="audio-main-controls">
+                    <button class="control-btn volume-btn" id="volumeToggle">
+                        <svg id="volumeIcon" viewBox="0 0 24 24">
+                            <path
+                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                        </svg>
+                        <svg id="muteIcon" viewBox="0 0 24 24" style="display: none">
+                            <path
+                                d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                        </svg>
+                    </button>
+
+                    <button class="control-btn play-pause-btn" id="playPauseBtn">
+                        <svg id="playIcon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                    </button>
+
+                    <button class="control-btn speed-btn" id="speedBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" />
+                            <path
+                                d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-5.66a2 2 0 0 0-2.83-2.83L12 11.17 7.76 6.93a2 2 0 0 0-2.83 2.83l5.66 5.65z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+
+                <div class="volume-control">
+                    <div class="volume-slider" id="volumeSlider">
+                        <div class="volume-fill" id="volumeFill"></div>
+                    </div>
+                    <div class="speed-control">
+                        <span class="speed-display" id="speedDisplay">1x</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio element oculto -->
+            <audio id="audioPlayer" preload="metadata" autoplay>
+                <source src="../assets/audio/Mod1_pag4.wav" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Análisis de Trabajo Seguro</h1>
+            <p>Metodología integral para prevención de riesgos en operaciones mineras</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-btn active" onclick="showSection('theory')">Teoría ATS</div>
+            <div class="nav-btn" onclick="showSection('case')">Caso: Esmeril</div>
+            <div class="nav-btn" onclick="showSection('analysis')">Análisis</div>
+            <div class="nav-btn" onclick="showSection('quiz')">Evaluación</div>
+        </div>
+
+        <!-- Sección Teoría -->
+        <div id="theory" class="content-section active">
+            <div class="timeline-container">
+                <div class="timeline-header">
+                    <h2 style="color: var(--color-azul); text-align: center; margin-bottom: 40px; font-size: 2rem;">
+                        Metodología ATS - Proceso Paso a Paso
+                    </h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item" onclick="expandTimelineCard(this)">
+                        <div class="timeline-dot">1</div>
+                        <div class="timeline-content">
+                            <div class="timeline-card right">
+                                <h3>Selección de Tarea</h3>
+                                <p>Identificar actividades con <span class="highlight">alta frecuencia de
+                                        accidentes</span>, accidentes graves, o tareas nuevas que requieren análisis
+                                    detallado.</p>
+                                <div class="timeline-details">
+                                    <ul>
+                                        <li>• Revisar estadísticas de accidentes</li>
+                                        <li>• Priorizar tareas críticas</li>
+                                        <li>• Considerar tareas nuevas o modificadas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="expandTimelineCard(this)">
+                        <div class="timeline-dot">2</div>
+                        <div class="timeline-content">
+                            <div class="timeline-card left">
+                                <h3>Definición de Pasos</h3>
+                                <p>Desglosar la tarea en <span class="highlight">pasos principales</span> secuenciales
+                                    para comprender completamente el proceso de trabajo.</p>
+                                <div class="timeline-details">
+                                    <ul>
+                                        <li>• Observar el trabajo en campo</li>
+                                        <li>• Documentar cada acción</li>
+                                        <li>• Secuenciar lógicamente</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="expandTimelineCard(this)">
+                        <div class="timeline-dot">3</div>
+                        <div class="timeline-content">
+                            <div class="timeline-card right">
+                                <h3>Identificación de Exposiciones</h3>
+                                <p>Detectar posibles exposiciones a <span class="highlight">pérdidas y daños</span>
+                                    tanto a personas, propiedad y procesos por peligros existentes.</p>
+                                <div class="timeline-details">
+                                    <ul>
+                                        <li>• Analizar riesgos físicos</li>
+                                        <li>• Evaluar riesgos químicos</li>
+                                        <li>• Considerar factores ergonómicos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="expandTimelineCard(this)">
+                        <div class="timeline-dot">4</div>
+                        <div class="timeline-content">
+                            <div class="timeline-card left">
+                                <h3>Evaluación de Eficiencia</h3>
+                                <p>Responder: <span class="highlight">¿Quién?, ¿Dónde?, ¿Cuándo?, ¿Cuál?, ¿Por qué?,
+                                        ¿Cómo?</span> para mejorar cada paso del proceso.</p>
+                                <div class="timeline-details">
+                                    <ul>
+                                        <li>• ¿Quién ejecuta la tarea?</li>
+                                        <li>• ¿Dónde se realiza?</li>
+                                        <li>• ¿Cuándo es más seguro?</li>
+                                        <li>• ¿Cómo optimizar el proceso?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="expandTimelineCard(this)">
+                        <div class="timeline-dot">5</div>
+                        <div class="timeline-content">
+                            <div class="timeline-card right">
+                                <h3>Desarrollo de Controles</h3>
+                                <p>Implementar <span class="highlight">controles específicos</span> para cada paso con
+                                    el fin de minimizar o controlar los riesgos identificados.</p>
+                                <div class="timeline-details">
+                                    <ul>
+                                        <li>• Controles de eliminación</li>
+                                        <li>• Controles de ingeniería</li>
+                                        <li>• Controles administrativos</li>
+                                        <li>• Equipos de protección personal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Caso de Estudio -->
+        <div id="case" class="content-section">
+            <div class="case-study">
+                <div class="case-header">
+                    <h2>Caso de Estudio: Operación con Esmeril</h2>
+                    <p>Análisis paso a paso de una actividad crítica en minería</p>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step-card">
+                        <h4>Paso 1: Preparación</h4>
+                        <p>Retirar la barra a esmerilar de la caja alimentadora</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h4>Paso 2: Desbarbado</h4>
+                        <p>Introducir la barra contra el esmeril para eliminar las rebabas</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h4>Paso 3: Almacenamiento</h4>
+                        <p>Depositar la barra esmerilada en la caja de barras esmeriladas</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h4>Paso 4: Protección Personal</h4>
+                        <p>Utilizar equipo de protección adecuado para manos, ojos y pies</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h4>Paso 5: Control de Polvo</h4>
+                        <p>Se utilizará camisa de mangas cortas. Instalar extracción localizada para polvo y guarda
+                            sobre el esmeril</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h4>Paso 6: Organización</h4>
+                        <p>Retirar barras sin rebabas de cajas para evitar acumulación</p>
+                    </div>
+
+                    <div class="step-card danger">
+                        <h4>⚠️ Riesgo: Laceraciones en manos</h4>
+                        <p>Por bordes filosos de caja de metal o de barras de hierro. Contusión en los pies por dejar
+                            caer la barra sobre ellos</p>
+                    </div>
+
+                    <div class="step-card danger">
+                        <h4>⚠️ Riesgo: Irritación ocular</h4>
+                        <p>Debido a chispas. Quemaduras por contacto con el esmeril. Rotura del paráñón debido a partes
+                            móviles del esmeril</p>
+                    </div>
+
+                    <div class="step-card danger">
+                        <h4>⚠️ Riesgo: Laceraciones adicionales</h4>
+                        <p>De manos por bordes filosos de caja de metal o de barras de hierro. Contusión en los pies por
+                            dejar caer la barra sobre ellos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Análisis -->
+        <div id="analysis" class="content-section">
+            <div class="case-study">
+                <div class="case-header">
+                    <h2>Análisis Integrado: Teoría vs Práctica</h2>
+                </div>
+
+                <div class="theory-grid">
+                    <div class="theory-card">
+                        <h3>Aplicación del ATS</h3>
+                        <p><span class="highlight">Tarea Seleccionada:</span> Operación con esmeril (alta frecuencia de
+                            lesiones)</p>
+                        <p><span class="highlight">Pasos Identificados:</span> 6 pasos principales del proceso</p>
+                        <p><span class="highlight">Riesgos Detectados:</span> Laceraciones, irritación ocular,
+                            contusiones, quemaduras
+                        </p>
+                    </div>
+
+                    <div class="theory-card">
+                        <h3>Controles Implementados</h3>
+                        <p><span class="highlight">EPP:</span> Protección para manos, ojos y pies</p>
+                        <p><span class="highlight">Ingeniería:</span> Sistema de extracción de polvo</p>
+                        <p><span class="highlight">Administrativos:</span> Procedimientos de manejo seguro</p>
+                    </div>
+
+                    <div class="theory-card">
+                        <h3>Evaluación de Eficiencia</h3>
+                        <p><span class="highlight">¿Quién?</span> Operador de esmeril capacitado</p>
+                        <p><span class="highlight">¿Dónde?</span> Área de esmerilado con ventilación</p>
+                        <p><span class="highlight">¿Cuándo?</span> Durante turno con supervisión</p>
+                        <p><span class="highlight">¿Cómo?</span> Siguiendo procedimiento establecido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Quiz -->
+        <div id="quiz" class="content-section">
+            <div class="quiz-container">
+                <h2 style="color: var(--color-azul); text-align: center; margin-bottom: 30px;">Evaluación de
+                    Conocimientos</h2>
+
+                <div id="question1" class="quiz-question">
+                    1. ¿Cuál es el primer paso en un Análisis de Trabajo Seguro?
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">Identificar los riesgos existentes
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, true)">Seleccionar la tarea a analizar</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">Definir los controles necesarios</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">Evaluar la eficiencia del proceso</div>
+                </div>
+
+                <button class="btn" onclick="nextQuestion()" id="nextBtn" style="display: none;">
+                    Siguiente Pregunta
+                    <span class="arrow">❯</span>
+                </button>
+
+                <div id="results" style="display: none; text-align: center; margin-top: 30px;">
+                    <h3 style="color: var(--color-azul-oscuro);">¡Evaluación Completada!</h3>
+                    <p id="finalScore">Has respondido correctamente <span id="scoreText"></span> de 3 preguntas</p>
+                    <p id="finalMessage"></p>
+                    <button class="btn" onclick="resetQuiz()">Reiniciar Evaluación</button>
+                    <button class="btn" onclick="goToNextPage()" style="background: var(--color-azul-degradado); color: var(--color-blanco);">
+                        Continuar
+                        <span class="arrow">❯</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/M1_pagina4.js"></script>
+<script>
+    function goHome() {
+        // Cambiar por la URL de tu página principal
+        window.location.href = '../index.html';
+        // O usar: window.location.href = 'index.html';
+    }
+
+    function goBack() {
+        window.location.href = 'M1_pagina3.html';
+    }
+
+
+    function goToNextPage() {
+        window.location.href = 'M1_pagina5.html';
+    }
+</script>
+
+</html>

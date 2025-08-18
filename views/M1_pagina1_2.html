@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../assets/css/main_ex.css" />
+  <link rel="stylesheet" href="../assets/css/sidebar.css" />
+  <link rel="stylesheet" href="../assets/css/ProgressBar.css" />
+  <link rel="stylesheet" href="../assets/css/ex1.css" />
+  <link rel="stylesheet" href="../assets/css/Funciones de supervivencia R(t)/exm3.css" />
+  <link rel="stylesheet" href="../assets/css/M1_pagina4.css" />
+  <link rel="stylesheet" href="../assets/css/info.css" />
+
+
+  <!-- Scripts -->
+  <script src="../js/info.js" defer></script>
+  <script src="../js/sidebar.js" defer></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <button class="back-page-btn" onclick="backPage()">
+        <span class="arrow">❮</span>
+    </button>
+    <nav id="sidebar" class="close">
+        <div id="logo-seccion">
+            <a href="">
+                <img src="../assets/images/logo_blanco.png" height="10px" alt="logo">
+            </a>
+            <button id="toggle-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+            </button>
+        </div>
+        <div id="barra">
+            <span id="barra-titulo"><strong>Progreso del Curso</strong></span>
+            <div id="progreso-container">
+                <div id="progreso-barra"></div>
+                <span id="progreso-texto">0%</span>
+            </div>
+        </div>
+        <div id="menu-container"></div>
+    </nav>
+
+
+  <!-- Logo inferior -->
+  <div class="logo-container"><img src="../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
+
+  <!-- Título principal -->
+  <header><h1 class="titulo-epp" style="margin: 10px 0 10px 0;"><span class="gradient-text2">Definición de Ajustes y Tolerancias</span></h1></header>
+  
+  <!-- Contenido interactivo insertado -->
+  <div class="container">
+    <div class="case-header">
+        <h2>Significado de tolerancia</h2>
+    </div>
+    
+    <div class="card-content hover-highlight">
+        Se denomina <span class="highlight">tolerancia dimensional</span> a la anchura del intervalo de medidas permitido para una determinada dimensión. En <span class="highlight">metrología dimensional</span>, las tolerancias se aplican a dimensiones de <span class="highlight">posición</span>(donde) y de <span class="highlight">forma</span>(qué tan grande). <span class="highlight">ISO 406:1987</span>
+        <img src="../assets/images/M1/sig_tolerancia.png" alt="Ajustes y tolerancias" class="img-concepto" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
+    </div>
+    
+    <div class="block-separator"></div>
+
+    <!-- Sección 1: Principio de Máximo Material (MMC) -->
+    <div class="case-study">
+        <div class="case-header">
+            <h2>Principio de Máximo Material (MMC)</h2>
+        </div>
+        
+        <div class="card-content hover-highlight">
+            El <span class="highlight">Principio de Máximo Material (MMC)</span> es una regla de oro en el diseño de piezas. Se refiere a la condición en la que una pieza tiene la máxima cantidad de <span class="highlight">"sustancia"</span> permitida por sus tolerancias.
+        </div>
+
+        <div class="case-header" style="margin-top: 40px;">
+            <h2>Condición de Máximo Material para un Agujero</h2>
+        </div>
+        
+        <div class="card-content hover-highlight" style="text-align: center;">
+            <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+                <svg id="diagram-svg" viewBox="0 0 100 50" style="width: 100%; height: 300px; border: 1px solid var(--color-azul); border-radius: 0.5rem; background-color: #f9fafb;">
+                    <rect x="0" y="0" width="100" height="50" fill="#e5e7eb" stroke="#374151" stroke-width="0.5" />
+                    <circle id="hole-circle" cx="50" cy="25" r="12" fill="#ffffff" stroke="#374151" stroke-width="1" />
+                    <line x1="50" y1="13" x2="50" y2="5" stroke="var(--color-azul)" stroke-width="1" />
+                    <line x1="50" y1="37" x2="50" y2="45" stroke="var(--color-azul)" stroke-width="1" />
+                    <line x1="50" y1="5" x2="80" y2="5" stroke="var(--color-azul)" stroke-width="1" />
+                    <line x1="80" y1="5" x2="80" y2="45" stroke="var(--color-azul)" stroke-width="1" />
+                    <line x1="50" y1="45" x2="80" y2="45" stroke="var(--color-azul)" stroke-width="1" />
+                    <text id="diameter-text" x="65" y="10" text-anchor="middle" font-size="3" fill="var(--color-azul)" font-family="Arial, sans-serif">DIÁM. 16.00 cm</text>
+                    <text id="tolerance-text" x="85" y="25" font-size="2.5" fill="var(--color-azul)" font-family="Arial, sans-serif">+0.40</text>
+                    <text id="tolerance-text-2" x="85" y="28" font-size="2.5" fill="var(--color-azul)" font-family="Arial, sans-serif">-0</text>
+                </svg>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; border: 1px solid var(--color-azul); border-radius: 10px; background: rgba(255, 255, 255, 0.1); max-width: 400px; margin-left: auto; margin-right: auto;">
+                <p id="instruction-text" style="color: var(--color-gris); font-weight: 600;">
+                    Un agujero con su diámetro nominal, antes de aplicar la tolerancia.
+                </p>
+            </div>
+            
+            <button id="mmc-button" class="btn" style="margin-top: 20px;">
+                Mostrar Condición de Máximo Material (MMC)
+            </button>
+            <button id="reset-button" class="btn" style="margin-top: 20px; display: none;">
+                Restablecer
+            </button>
+        </div>
+    </div>
+
+    <div class="block-separator"></div>
+
+    <!-- Sección 2: Posición de la Tolerancia -->
+    <div class="case-study">
+        <div class="case-header">
+            <h2>Posición de la Tolerancia</h2>
+        </div>
+        <div class="card-content hover-highlight" style="margin-bottom: 30px;">
+            La <span class="highlight">posición de tolerancia</span> se refiere a la disposición geométrica o dimensional aceptable de una pieza dentro de unos límites preestablecidos. 
+            <br>
+            <span class="highlight">Interactúa</span> con el gráfico a continuación para explorar las diferentes zonas de tolerancia.
+        </div>
+
+        <div class="card-content hover-highlight">
+            <div class="chart-container" style="position: relative; margin: 20px 0;">
+                <!-- Imagen del gráfico -->
+                <img id="tolerance-chart" src="../assets/images/M1/pos_tolerancia.png" alt="Gráfico de posiciones de tolerancia para agujero y eje" style="width: 100%; height: auto; border-radius: 0.5rem;">
+                
+                <!-- Recuadros para las zonas interactivas -->
+                <div id="hole-tolerance" class="highlight-area" style="position: absolute; top: 1%; left: 1.5%; width: 44%; height: 50%; border: 2px solid transparent; cursor: pointer; transition: border-color 0.2s;"></div>
+                <div id="shaft-tolerance" class="highlight-area" style="position: absolute; top: 1%; left: 55%; width: 44%; height: 50%; border: 2px solid transparent; cursor: pointer; transition: border-color 0.2s;"></div>
+
+                <div id="info-box" class="info-box" style="position: absolute; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; pointer-events: none; opacity: 0; transition: opacity 0.2s; transform: translate(-50%, -100%);"></div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; border-left: 4px solid var(--color-azul); background: rgba(255, 255, 255, 0.05);">
+                <h3 style="color: var(--color-azul); margin-bottom: 10px;">Explicación del gráfico</h3>
+                <p style="color: var(--color-gris);">
+                    El gráfico ilustra el margen de variación permitido en la posición real de un elemento (un agujero y un eje en este caso) respecto a su ubicación teórica, el cual es especificado mediante <span class="highlight">tolerancias geométricas</span> en un plano técnico.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-separator"></div>
+
+    <!-- Sección 3: Visualización en 3D -->
+    <div class="case-study">
+        <div class="case-header">
+            <h2>Fórmula para determinar las tolerancias en una cota de plano</h2>
+        </div>
+
+        <div class="card-content hover-highlight" style="margin-bottom: 30px;">
+            Aquí puedes explorar el concepto de <span class="highlight">diámetro nominal</span> y <span class="highlight">diámetro real</span> en un modelo 3D. Usa el ratón para rotar la pieza y el scroll para hacer zoom.
+        </div>
+
+        <div class="card-content hover-highlight">
+            <!-- Contenedor 3D -->
+            <div id="three-d-container" style="width: 100%; height: 400px; background-color: #e5e7eb; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin: 20px 0;"></div>
+            
+            <div class="theory-grid" style="margin-top: 30px;">
+                <div class="theory-card">
+                    <h3>Fórmulas de Tolerancia</h3>
+                    <p>Para calcular las tolerancias en una cota de plano:</p>
+                    <div style="text-align: center; margin: 15px 0;">
+                        <p><span class="highlight">Tolerancia dimensional:</span> T<sub>D</sub> = M<sub>Máx</sub> - M<sub>Mín</sub></p>
+                        <p><span class="highlight">Desviación superior:</span> D<sub>S</sub> = M<sub>Máx</sub> - M<sub>N</sub></p>
+                        <p><span class="highlight">Desviación inferior:</span> D<sub>I</sub> = M<sub>Mín</sub> - M<sub>N</sub></p>
+                    </div>
+                </div>
+                
+                <div class="theory-card">
+                    <h3>Definiciones</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><span class="highlight">M<sub>N</sub></span> = Medida Nominal</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight">M<sub>R</sub></span> = Medida Real</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight">M<sub>Máx</sub></span> = Medida Máxima</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight">M<sub>Mín</sub></span> = Medida Mínima</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 4: Fórmulas de tolerancia (Imagen interactiva de M3_pagina1) -->
+    <div class="case-study">
+        
+        <div class="card-content hover-highlight">
+            <div class="didactic-image-container" id="didacticImageContainer">
+                <!-- Imagen principal -->
+                <img src="../assets/images/M1/for_tolerancia.png" 
+                     alt="Fórmulas de tolerancia" 
+                     class="didactic-main-image" 
+                     id="didacticMainImage">
+
+                <!-- Marcadores numerados -->
+                <div class="didactic-marker" id="didacticMarker1" data-info="1" style="top: 18%; left: 39%;">1</div>
+                <div class="didactic-marker" id="didacticMarker2" data-info="2" style="top: 27%; left: 46%;">2</div>
+                <div class="didactic-marker" id="didacticMarker3" data-info="3" style="top: 6%; left: 57%;">3</div>
+                <div class="didactic-marker" id="didacticMarker4" data-info="4" style="top: 53%; left: 39.5%;">4</div>
+                <div class="didactic-marker" id="didacticMarker5" data-info="5" style="top: 62%; left: 46.5%;">5</div>
+                <div class="didactic-marker" id="didacticMarker6" data-info="6" style="top: 42.5%; left: 57%;">6</div>
+
+                <!-- Panel de descripciones -->
+                <div class="didactic-description-panel" id="didacticDescriptionPanel">
+                    <div class="didactic-description-content" id="didacticDescriptionContent">
+                        <div class="didactic-default-message">Pasa el cursor sobre los números para ver la información</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Botón de continuar -->
+  <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+
+  <!--AUDIOv2-->
+  <div class="audio-control-wrapper" style="z-index: 9999;">
+      <button class="audio-toggle-btn" id="audioToggle">
+          <svg id="togglePlayIcon" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+          </svg>
+          <svg id="togglePauseIcon" viewBox="0 0 24 24" style="display: none">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+      </button>
+
+      <div class="audio-controls" id="audioControls">
+          <div class="custom-audio-player">
+              <div class="audio-main-controls">
+                  <button class="control-btn volume-btn" id="volumeToggle">
+                      <svg id="volumeIcon" viewBox="0 0 24 24">
+                          <path
+                              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                      </svg>
+                      <svg id="muteIcon" viewBox="0 0 24 24" style="display: none">
+                          <path
+                              d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                      </svg>
+                  </button>
+
+                  <button class="control-btn play-pause-btn" id="playPauseBtn">
+                      <svg id="playIcon" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                      </svg>
+                  </button>
+
+                  <button class="control-btn speed-btn" id="speedBtn">
+                      <svg viewBox="0 0 24 24">
+                          <path
+                              d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" />
+                          <path
+                              d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-5.66a2 2 0 0 0-2.83-2.83L12 11.17 7.76 6.93a2 2 0 0 0-2.83 2.83l5.66 5.65z" />
+                      </svg>
+                  </button>
+              </div>
+
+              <div class="progress-container">
+                  <div class="progress-bar" id="progressBar">
+                      <div class="progress-fill" id="progressFill"></div>
+                  </div>
+                  <div class="time-display">
+                      <span id="currentTime">0:00</span>
+                      <span id="duration">0:00</span>
+                  </div>
+              </div>
+
+              <div class="volume-control">
+                  <div class="volume-slider" id="volumeSlider">
+                      <div class="volume-fill" id="volumeFill"></div>
+                  </div>
+                  <div class="speed-control">
+                      <span class="speed-display" id="speedDisplay">1x</span>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Audio element oculto -->
+          <audio id="audioPlayer" preload="metadata" autoplay>
+              <source src="../assets/audio/M1/M1_pagina1_2.wav" type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+          </audio>
+      </div>
+  </div>
+
+  <script src="../js/audioPlayer.js"></script>
+  
+  <!-- Scripts para funcionalidad interactiva -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <script>
+    // Estilos CSS adicionales para las animaciones
+    const additionalStyles = `
+        .mmc-active {
+            transform: scale(0.85);
+            transition: transform 0.5s ease-in-out;
+        }
+        .text-fade-in {
+            animation: fadeIn 1s forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .highlight-area:hover {
+            border-color: #3b82f6 !important;
+        }
+    `;
+    
+    // Agregar estilos al head
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = additionalStyles;
+    document.head.appendChild(styleSheet);
+
+    // Lógica de la primera sección (MMC)
+    document.addEventListener('DOMContentLoaded', function() {
+        const holeCircle = document.getElementById('hole-circle');
+        const mmcButton = document.getElementById('mmc-button');
+        const resetButton = document.getElementById('reset-button');
+        const instructionText = document.getElementById('instruction-text');
+        
+        if (mmcButton) {
+            mmcButton.addEventListener('click', () => {
+                holeCircle.classList.add('mmc-active');
+                instructionText.innerHTML = '<span style="color: #3b82f6;">¡Mira! El agujero se ha hecho más pequeño.</span> En un agujero, la condición MMC es el <strong>diámetro mínimo permitido</strong>. De esta forma, la pieza tiene la mayor cantidad de material.';
+                mmcButton.style.display = 'none';
+                resetButton.style.display = 'inline-block';
+            });
+        }
+
+        if (resetButton) {
+            resetButton.addEventListener('click', () => {
+                holeCircle.classList.remove('mmc-active');
+                instructionText.innerHTML = 'Un agujero con su diámetro nominal, antes de aplicar la tolerancia.';
+                mmcButton.style.display = 'inline-block';
+                resetButton.style.display = 'none';
+            });
+        }
+
+        // Lógica de la segunda sección (Posición de la Tolerancia)
+        const infoBox = document.getElementById('info-box');
+        const chart = document.getElementById('tolerance-chart');
+        
+        const areas = {
+            'hole-tolerance': {
+                text: 'Zona de tolerancia para un agujero. Indica la variación permitida en la medida, con un límite superior "di" y un límite inferior "ds".'
+            },
+            'shaft-tolerance': {
+                text: 'Zona de tolerancia para un eje. De manera similar, tiene un límite superior "di" y un límite inferior "ds" que definen el rango aceptable de su medida.'
+            }
+        };
+
+        Object.keys(areas).forEach(id => {
+            const area = document.getElementById(id);
+            if (area && chart && infoBox) {
+                area.addEventListener('mousemove', (e) => {
+                    const rect = chart.getBoundingClientRect();
+                    infoBox.style.left = `${e.clientX - rect.left}px`;
+                    infoBox.style.top = `${e.clientY - rect.top}px`;
+                    infoBox.textContent = areas[id].text;
+                    infoBox.style.opacity = 1;
+                });
+
+                area.addEventListener('mouseleave', () => {
+                    infoBox.style.opacity = 0;
+                });
+            }
+        });
+
+        // Lógica de la tercera sección (3D) - con verificación de Three.js
+        const container3D = document.getElementById('three-d-container');
+        
+        function init3D() {
+            if (typeof THREE === 'undefined') {
+                console.log('Three.js no está disponible, reintentando...');
+                setTimeout(init3D, 100);
+                return;
+            }
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container3D.clientWidth / container3D.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container3D.clientWidth, container3D.clientHeight);
+            renderer.setClearColor(0x000000, 0);
+            container3D.appendChild(renderer.domElement);
+
+            let controls;
+            if (typeof THREE.OrbitControls !== 'undefined') {
+                controls = new THREE.OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.25;
+                controls.screenSpacePanning = false;
+            }
+
+            camera.position.z = 5;
+
+            // Función para crear un sprite de texto 2D
+            function createTextSprite(message, color = '#3b82f6', fontSize = 16) {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                const font = `${fontSize}px Arial`;
+                context.font = font;
+                const textMetrics = context.measureText(message);
+                const textWidth = textMetrics.width;
+                const textHeight = fontSize;
+                canvas.width = textWidth;
+                canvas.height = textHeight;
+                context.font = font;
+                context.fillStyle = color;
+                context.fillText(message, 0, fontSize);
+
+                const texture = new THREE.CanvasTexture(canvas);
+                const material = new THREE.SpriteMaterial({ map: texture });
+                const sprite = new THREE.Sprite(material);
+                sprite.scale.set(textWidth / 50, textHeight / 50, 1);
+                return sprite;
+            }
+
+            // Geometría del cilindro (pieza)
+            const nominalRadius = 1;
+            const realRadius = 0.99;
+            const height = 4;
+            const cylinderGeometry = new THREE.CylinderGeometry(nominalRadius, nominalRadius, height, 32);
+            const cylinderMaterial = new THREE.MeshStandardMaterial({ color: 0x555555, metalness: 0.8, roughness: 0.2 });
+            const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+            scene.add(cylinder);
+
+            // Línea del Diámetro Nominal
+            const nominalPoints = [
+                new THREE.Vector3(-nominalRadius, height / 2, 0),
+                new THREE.Vector3(nominalRadius, height / 2, 0)
+            ];
+            const nominalGeometry = new THREE.BufferGeometry().setFromPoints(nominalPoints);
+            const nominalMaterial = new THREE.LineBasicMaterial({ color: 0x3b82f6, linewidth: 2 });
+            const nominalLine = new THREE.Line(nominalGeometry, nominalMaterial);
+            scene.add(nominalLine);
+
+            // Texto del Diámetro Nominal
+            const nominalText = createTextSprite('DIÁMETRO NOMINAL: 41.8mm');
+            nominalText.position.set(nominalRadius + 1.5, height / 2, 0);
+            scene.add(nominalText);
+
+            // Línea del Diámetro Real
+            const realPoints = [
+                new THREE.Vector3(-realRadius, -height / 2, 0),
+                new THREE.Vector3(realRadius, -height / 2, 0)
+            ];
+            const realGeometry = new THREE.BufferGeometry().setFromPoints(realPoints);
+            const realMaterial = new THREE.LineBasicMaterial({ color: 0x3b82f6, linewidth: 2 });
+            const realLine = new THREE.Line(realGeometry, realMaterial);
+            scene.add(realLine);
+
+            // Texto del Diámetro Real
+            const realText = createTextSprite('DIÁMETRO REAL: 41.78mm');
+            realText.position.set(realRadius + 1.5, -height / 2, 0);
+            scene.add(realText);
+
+            // Agregando luces
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(5, 5, 5).normalize();
+            scene.add(directionalLight);
+
+            // Render loop
+            function animate() {
+                requestAnimationFrame(animate);
+                if (controls) controls.update();
+                renderer.render(scene, camera);
+            }
+
+            // Manejar el redimensionamiento de la ventana
+            window.addEventListener('resize', () => {
+                camera.aspect = container3D.clientWidth / container3D.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container3D.clientWidth, container3D.clientHeight);
+            });
+
+            animate();
+        }
+
+        // Inicializar 3D después de un pequeño delay para asegurar que Three.js esté cargado
+        setTimeout(init3D, 500);
+    });
+  </script>
+  
+  <!--///////-->
+  <!-- Scripts funcionales -->
+  <script src="../js/SCORM.js"></script>
+  <script src="../js/Funciones de supervivencia R(t)/exm3.js"></script>
+  <script>
+    // Navegación
+    function goHome() { window.location.href = 'index.html'; }
+    function backPage() { window.location.href = 'M1_pagina1.html'; }
+    function goToNextPage() { window.location.href = 'M1_pagina2.html'; }
+
+    ScormManager.init();
+    ScormManager.guardarProgreso("M3_pagina3.html");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const progreso = ScormManager.cargarProgreso();
+      const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
+      document.getElementById("progreso-barra").style.width = porcentaje + "%";
+      document.getElementById("progreso-texto").textContent = porcentaje + "%";
+    });
+  </script>
+  <script>
+    fetch("./componentes/exm3-info.html")
+            .then(res => res.text())
+            .then(html => {
+            document.getElementById("info").innerHTML = html;
+    });
+
+
+  </script>
+
+
+</body>
+</html>

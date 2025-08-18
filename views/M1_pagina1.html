@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../assets/css/ProgressBar.css" />
   <link rel="stylesheet" href="../assets/css/ex1.css" />
   <link rel="stylesheet" href="../assets/css/Funciones de supervivencia R(t)/exm3.css" />
+  <link rel="stylesheet" href="../assets/css/M1_pagina4.css" />
 
 
   <!-- Scripts -->
@@ -48,14 +49,140 @@
   <div class="logo-container"><img src="../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
 
   <!-- Título principal -->
-  <header><h1 class="titulo-epp" style="margin: 40px;"><span class="gradient-text2">Definición de Ajustes y Tolerancias</span></h1></header>
-
-  <!-- Contenido principal -->
-  <div id="info" class="container" style="margin-left: 10%; margin-right: 10%;"></div>
-
+  <header><h1 class="titulo-epp" style="margin: 10px 0 10px 0;"><span class="gradient-text2">Definición de Ajustes y Tolerancias</span></h1></header>
   
   <!-- Botón de continuar -->
   <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+
+  <!-- Secciones importadas de M1_pagina4.html -->
+  <div class="container">
+
+    <div class="navigation">
+        <div class="nav-btn active" onclick="showSection2('theory2', this)">Definiciones</div>
+        <div class="nav-btn" onclick="showSection2('case2', this)">Calidad y Medición</div>
+        <div class="nav-btn" onclick="showSection2('analysis2', this)">Recomendaciones</div>
+        <div class="nav-btn" onclick="showSection2('quiz', this)">Evaluación</div>
+    </div>
+
+    <!-- Sección Teoría -->
+    <div id="theory2" class="content-section active">
+        <div class="case-study">
+            <div class="case-header">
+                <h2>Definiciones clave</h2>
+            </div>
+            
+            <div class="card-content hover-highlight">
+                <span class="highlight">Tolerancia dimensional:</span>la anchura del intervalo de medidas permitido para una determinada dimensión.
+                <br/><br>
+                <span class="highlight">Ajuste:</span>la relación dimensional entre dos piezas que se van a acoplar o ensamblar, considerando las tolerancias de fabricación de cada una.
+                <img src="../assets/images/M1/ajustes.png" alt="Ajustes y tolerancias" class="img-concepto" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
+            </div>
+
+            <div class="block-separator"></div>
+            
+            <div class="case-header" style="margin-top: 40px;">
+                <h2>Función de las tolerancias en fabricación</h2>
+            </div>
+            
+            <div class="card-content hover-highlight">
+                En los<span class="highlight">procesos de fabricación</span>, basta con que los elementos cumplan con los intervalos de valores admisibles o tolerancias especificadas para asegurar la funcionalidad del conjunto. Esto garantiza la<span class="highlight">intercambiabilidad</span>de elementos análogos, evitando la necesidad de valores exactos.
+                <img src="../assets/images/M1/ajustes_2.png" alt="Función de tolerancias" class="img-concepto" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
+            </div>
+
+        </div> 
+    </div>
+
+    <!-- Sección Caso de Estudio -->
+    <div id="case2" class="content-section">
+        <div class="case-study">
+            <div class="case-header">
+                <h2>Relación con la calidad y la medición</h2>
+            </div>
+            
+            <div class="theory-grid">
+                <div class="theory-card">
+                    <h3>Incertidumbre</h3>
+                    <p>La calidad de una medida está estrechamente vinculada con la<span class="highlight">incertidumbre de medición</span>, que es el margen de duda sobre la exactitud del<span class="highlight">valor obtenido</span>.</p>
+                </div>
+
+                <div class="theory-card">
+                    <h3>Definición y función de las tolerancias de fabricación</h3>
+                    <p>Las<span class="highlight">tolerancias de fabricación</span>definen qué tan precisas deben ser las dimensiones para que el producto cumpla con su<span class="highlight">función</span>.</p>
+                </div>
+
+                <div class="theory-card">
+                    <h3>Impacto de tolerancias estrictas en la producción</h3>
+                    <p>Cuanto más estrictas sean las<span class="highlight">tolerancias</span>, mayor será la precisión de medida requerida para verificar que se cumplen las<span class="highlight">especificaciones</span>.</p>
+                    <p>Esta necesidad de precisión influye directamente en los<span class="highlight">equipos de medición</span>, el<span class="highlight">control de calidad</span> y los<span class="highlight">costos de producción</span>.</p>
+                </div>
+            </div>  
+        </div>  
+    </div>
+
+    <!-- Sección Análisis -->
+    <div id="analysis2" class="content-section">
+        <div class="case-study">
+            <div class="case-header">
+                <h2>¡A tomar nota!</h2>
+                <div class="card-content hover-highlight" style="margin-top: 20px;">
+                    Las <span class="highlight">tolerancias geométricas</span>deben especificarse únicamente en aquellos aspectos que impacten directamente:
+                </div>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <h4>La funcionalidad del producto</h4>
+                    <p>Garantizar que la pieza cumpla correctamente su propósito de uso.</p>
+                </div>
+
+                <div class="step-card">
+                    <h4>La intercambiabilidad entre piezas</h4>
+                    <p>Asegurar que diferentes piezas encajen y funcionen de manera uniforme.</p>
+                </div>
+
+                <div class="step-card">
+                    <h4>Aspectos críticos relacionados con el proceso de fabricación</h4>
+                    <p>Mantener la viabilidad y estabilidad del proceso productivo.</p>
+                </div>
+            </div>
+            <div class="card-content hover-highlight" style="margin-top: 40px; text-align: center;">
+                Evitar la imposición de<span class="highlight">tolerancias innecesariamente estrictas</span>, ya que, incrementan los costos de fabricación y verificación sin aportar valor funcional.
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Quiz (bloque original para funcionalidad) -->
+    <div id="quiz" class="content-section">
+        <div class="quiz-container">
+            <h2 style="color: var(--color-azul); text-align: center; margin-bottom: 30px;">Evaluación de
+                Conocimientos</h2>
+
+            <div id="question1" class="quiz-question">
+                <!-- La pregunta se cargará dinámicamente -->
+            </div>
+            <div class="quiz-options">
+                <!-- Las opciones se cargarán dinámicamente -->
+            </div>
+
+            <button class="btn" onclick="nextQuestion()" id="nextBtn" style="display: none;">
+                Siguiente Pregunta
+                <span class="arrow">❯</span>
+            </button>
+
+            <div id="results" style="display: none; text-align: center; margin-top: 30px;">
+                <h3 style="color: var(--color-azul-oscuro);">¡Evaluación Completada!</h3>
+                <p id="finalScore">Has respondido correctamente <span id="scoreText"></span> de 3 preguntas</p>
+                <p id="finalMessage"></p>
+                <button class="btn" onclick="resetQuiz()">Reiniciar Evaluación</button>
+                <button class="btn" onclick="goToNextPage()" style="background: var(--color-azul-degradado); color: var(--color-blanco);">
+                    Continuar
+                    <span class="arrow">❯</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
 
   <!--AUDIOv2-->
   <div class="audio-control-wrapper" style="z-index: 9999;">
@@ -123,14 +250,156 @@
 
           <!-- Audio element oculto -->
           <audio id="audioPlayer" preload="metadata" autoplay>
-              <source src="../assets/audio/M3p3.wav" type="audio/mp3" />
+              <source src="../assets/audio/M1/M1_pagina1.wav" type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
           </audio>
       </div>
   </div>
 
   <script src="../js/audioPlayer.js"></script>
-  <!--///////-->
+  <script>
+    // Variables globales para el quiz
+    let currentQuestion = 1;
+    let correctAnswers = 0;
+
+    // Preguntas específicas de tolerancias
+    const quizQuestions = [
+        {
+            q: "1. ¿Qué es la tolerancia dimensional?",
+            options: [
+                { text: "La diferencia entre el valor máximo y mínimo que puede medir un instrumento.", correct: false },
+                { text: "El intervalo de medidas permitido para una dimensión específica sin afectar la funcionalidad.", correct: true },
+                { text: "El margen de error en el ensamblaje de piezas móviles.", correct: false },
+                { text: "La distancia mínima entre dos piezas en contacto.", correct: false }
+            ]
+        },
+        {
+            q: "2. ¿Cuál es la función principal de las tolerancias en la fabricación?",
+            options: [
+                { text: "Asegurar la funcionalidad y permitir la intercambiabilidad de piezas.", correct: true },
+                { text: "Reducir el tiempo de producción.", correct: false },
+                { text: "Garantizar que todas las piezas tengan dimensiones exactas.", correct: false },
+                { text: "Disminuir el peso de los componentes.", correct: false }
+            ]
+        },
+        {
+            q: "3. ¿Qué ocurre cuando se especifican tolerancias innecesariamente estrictas?",
+            options: [
+                { text: "Mejora la intercambiabilidad de piezas.", correct: false },
+                { text: "Disminuye la precisión requerida en las mediciones.", correct: false },
+                { text: "Se reduce el uso de equipos de control de calidad.", correct: false },
+                { text: "Aumentan los costos de fabricación y verificación sin aportar valor funcional.", correct: true }
+            ]
+        }
+    ];
+
+    // Función para cargar pregunta
+    function loadQuestion(questionNum) {
+        if (questionNum <= quizQuestions.length) {
+            const question = quizQuestions[questionNum - 1];
+            document.getElementById('question1').textContent = question.q;
+
+            const optionsContainer = document.querySelector('.quiz-options');
+            optionsContainer.innerHTML = '';
+
+            question.options.forEach(option => {
+                const div = document.createElement('div');
+                div.className = 'quiz-option';
+                div.textContent = option.text;
+                div.onclick = () => selectAnswer(div, option.correct);
+                optionsContainer.appendChild(div);
+            });
+
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+    }
+
+    // Función para seleccionar respuesta
+    function selectAnswer(option, isCorrect) {
+        // Deshabilitar todas las opciones
+        const options = option.parentNode.querySelectorAll('.quiz-option');
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+            if (opt === option) {
+                opt.classList.add(isCorrect ? 'correct' : 'incorrect');
+            } else if (opt.onclick.toString().includes('true')) {
+                opt.classList.add('correct');
+            }
+        });
+
+        if (isCorrect) {
+            correctAnswers++;
+        }
+
+        document.getElementById('nextBtn').style.display = 'inline-block';
+    }
+
+    // Función para siguiente pregunta
+    function nextQuestion() {
+        currentQuestion++;
+
+        if (currentQuestion <= 3) {
+            loadQuestion(currentQuestion);
+        } else {
+            showResults();
+        }
+    }
+
+    // Función para mostrar resultados
+    function showResults() {
+        const percentage = (correctAnswers / 3) * 100;
+        document.getElementById('scoreText').textContent = correctAnswers;
+
+        let message = "";
+        if (percentage === 100) {
+            message = "¡Excelente! Dominas completamente los conceptos de tolerancias.";
+        } else if (percentage >= 66) {
+            message = "¡Muy bien! Tienes un buen entendimiento de las tolerancias.";
+        } else {
+            message = "Considera revisar los conceptos de tolerancias nuevamente.";
+        }
+
+        document.getElementById('finalMessage').textContent = message;
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('nextBtn').style.display = 'none';
+
+        // Ocultar la pregunta actual
+        document.getElementById('question1').style.display = 'none';
+        document.querySelector('.quiz-options').style.display = 'none';
+    }
+
+    // Función para reiniciar quiz
+    function resetQuiz() {
+        currentQuestion = 1;
+        correctAnswers = 0;
+
+        // Mostrar elementos del quiz
+        document.getElementById('question1').style.display = 'block';
+        document.querySelector('.quiz-options').style.display = 'grid';
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+
+        // Cargar primera pregunta
+        loadQuestion(1);
+    }
+
+    // Script para navegación SECCIONES NUEVAS
+    function showSection2(sectionId, btn) {
+      document.querySelectorAll('.container .content-section').forEach(s => s.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+
+      document.querySelectorAll('.container .nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Si es quiz, reiniciamos y cargamos la primera pregunta
+      if(sectionId === 'quiz'){
+        setTimeout(() => {
+          resetQuiz();
+        }, 100);
+      }
+    }
+  </script>
+    <!--///////-->
   <!-- Scripts funcionales -->
   <script src="../js/SCORM.js"></script>
   <script src="../js/Funciones de supervivencia R(t)/exm3.js"></script>
@@ -138,7 +407,7 @@
     // Navegación
     function goHome() { window.location.href = 'index.html'; }
     function backPage() { window.location.href = 'M1_inicio.html'; }
-    function goToNextPage() { window.location.href = 'M1_pagina2.html'; }
+    function goToNextPage() { window.location.href = 'M1_pagina1_2.html'; }
 
     ScormManager.init();
     ScormManager.guardarProgreso("M3_pagina3.html");

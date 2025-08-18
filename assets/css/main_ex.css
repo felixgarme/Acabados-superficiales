@@ -255,6 +255,11 @@ p {
 }
 
 
+.block-separator {
+      margin: 40px 0;
+      border-bottom: 2px solid #e0e0e0;
+}
+
 /* FUENTE CON DEGRADADO */
 
 .gradient-text {
