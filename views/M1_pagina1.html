@@ -50,9 +50,6 @@
 
   <!-- Título principal -->
   <header><h1 class="titulo-epp" style="margin: 10px 0 10px 0;"><span class="gradient-text2">Definición de Ajustes y Tolerancias</span></h1></header>
-  
-  <!-- Botón de continuar -->
-  <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
 
   <!-- Secciones importadas de M1_pagina4.html -->
   <div class="container">
@@ -75,7 +72,7 @@
                 <span class="highlight">Tolerancia dimensional:</span>la anchura del intervalo de medidas permitido para una determinada dimensión.
                 <br/><br>
                 <span class="highlight">Ajuste:</span>la relación dimensional entre dos piezas que se van a acoplar o ensamblar, considerando las tolerancias de fabricación de cada una.
-                <img src="../assets/images/M1/ajustes.png" alt="Ajustes y tolerancias" class="img-concepto" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
+                <img src="../assets/images/M1/ajustes.png" alt="Ajustes y tolerancias" class="img-concepto responsive-image" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
             </div>
 
             <div class="block-separator"></div>
@@ -86,7 +83,7 @@
             
             <div class="card-content hover-highlight">
                 En los<span class="highlight">procesos de fabricación</span>, basta con que los elementos cumplan con los intervalos de valores admisibles o tolerancias especificadas para asegurar la funcionalidad del conjunto. Esto garantiza la<span class="highlight">intercambiabilidad</span>de elementos análogos, evitando la necesidad de valores exactos.
-                <img src="../assets/images/M1/ajustes_2.png" alt="Función de tolerancias" class="img-concepto" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
+                <img src="../assets/images/M1/ajustes_2.png" alt="Función de tolerancias" class="img-concepto responsive-image" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
             </div>
 
         </div> 
@@ -99,7 +96,7 @@
                 <h2>Relación con la calidad y la medición</h2>
             </div>
             
-            <div class="theory-grid">
+            <div class="theory-grid responsive-grid">
                 <div class="theory-card">
                     <h3>Incertidumbre</h3>
                     <p>La calidad de una medida está estrechamente vinculada con la<span class="highlight">incertidumbre de medición</span>, que es el margen de duda sobre la exactitud del<span class="highlight">valor obtenido</span>.</p>
@@ -129,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="steps-container">
+            <div class="steps-container responsive-steps">
                 <div class="step-card">
                     <h4>La funcionalidad del producto</h4>
                     <p>Garantizar que la pieza cumpla correctamente su propósito de uso.</p>
@@ -258,6 +255,221 @@
 
   <script src="../js/audioPlayer.js"></script>
   <script>
+    // Estilos CSS adicionales para responsive
+    const additionalStyles = `
+        /* Estilos responsive generales */
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .responsive-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .titulo-epp {
+                font-size: 1.5rem !important;
+                margin: 10px 15px !important;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .navigation {
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+            }
+
+            .nav-btn {
+                flex: 1;
+                min-width: 120px;
+                font-size: 0.85rem;
+                padding: 10px 8px;
+                text-align: center;
+            }
+
+            .case-header h2 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .card-content {
+                padding: 20px 15px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .img-concepto {
+                max-width: 100% !important;
+                margin: 20px auto 0 auto !important;
+            }
+
+            .theory-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+
+            .theory-card {
+                padding: 15px !important;
+            }
+
+            .theory-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .theory-card p {
+                font-size: 0.9rem;
+            }
+
+            .step-card {
+                padding: 15px !important;
+                margin-bottom: 15px;
+            }
+
+            .step-card h4 {
+                font-size: 1.1rem;
+            }
+
+            .step-card p {
+                font-size: 0.9rem;
+            }
+
+            .quiz-container {
+                padding: 20px 15px !important;
+            }
+
+            .quiz-question {
+                font-size: 1.1rem !important;
+                margin-bottom: 20px !important;
+            }
+
+            .quiz-options {
+                gap: 12px !important;
+            }
+
+            .quiz-option {
+                padding: 15px !important;
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+            }
+
+            .btn {
+                padding: 12px 20px !important;
+                font-size: 0.9rem !important;
+                margin: 10px 5px !important;
+            }
+
+            #results {
+                padding: 20px 10px !important;
+            }
+
+            #results h3 {
+                font-size: 1.2rem !important;
+            }
+
+            #results p {
+                font-size: 0.95rem !important;
+                margin: 10px 0 !important;
+            }
+        }
+
+        /* Responsive para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .titulo-epp {
+                font-size: 1.8rem !important;
+                margin: 10px 30px !important;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-btn {
+                font-size: 0.9rem;
+                padding: 12px 16px;
+            }
+
+            .theory-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            }
+        }
+
+        /* Responsive para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .titulo-epp {
+                font-size: 1.3rem !important;
+                margin: 10px 10px !important;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                min-width: auto;
+                font-size: 0.8rem;
+                padding: 12px 10px;
+            }
+
+            .case-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .card-content {
+                padding: 15px 10px;
+                font-size: 0.9rem;
+            }
+
+            .theory-card, .step-card {
+                padding: 12px !important;
+            }
+
+            .quiz-container {
+                padding: 15px 10px !important;
+            }
+
+            .quiz-question {
+                font-size: 1rem !important;
+            }
+
+            .quiz-option {
+                padding: 12px !important;
+                font-size: 0.85rem !important;
+            }
+
+            .btn {
+                padding: 10px 16px !important;
+                font-size: 0.85rem !important;
+            }
+        }
+    `;
+    
+    // Agregar estilos al head
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = additionalStyles;
+    document.head.appendChild(styleSheet);
+
     // Variables globales para el quiz
     let currentQuestion = 1;
     let correctAnswers = 0;

@@ -61,7 +61,7 @@
     
     <div class="card-content hover-highlight">
         Se denomina <span class="highlight">tolerancia dimensional</span> a la anchura del intervalo de medidas permitido para una determinada dimensión. En <span class="highlight">metrología dimensional</span>, las tolerancias se aplican a dimensiones de <span class="highlight">posición</span>(donde) y de <span class="highlight">forma</span>(qué tan grande). <span class="highlight">ISO 406:1987</span>
-        <img src="../assets/images/M1/sig_tolerancia.png" alt="Ajustes y tolerancias" class="img-concepto" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
+        <img src="../assets/images/M1/sig_tolerancia.png" alt="Ajustes y tolerancias" class="img-concepto responsive-image" style="display:block; margin:32px auto 0 auto; max-width:360px; border-radius:18px; box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10); background:#fff;"/>
     </div>
     
     <div class="block-separator"></div>
@@ -81,8 +81,8 @@
         </div>
         
         <div class="card-content hover-highlight" style="text-align: center;">
-            <div style="width: 100%; max-width: 600px; margin: 0 auto;">
-                <svg id="diagram-svg" viewBox="0 0 100 50" style="width: 100%; height: 300px; border: 1px solid var(--color-azul); border-radius: 0.5rem; background-color: #f9fafb;">
+            <div class="svg-container" style="width: 100%; max-width: 600px; margin: 0 auto;">
+                <svg id="diagram-svg" viewBox="0 0 100 50" style="width: 100%; height: auto; min-height: 200px; max-height: 300px; border: 1px solid var(--color-azul); border-radius: 0.5rem; background-color: #f9fafb;">
                     <rect x="0" y="0" width="100" height="50" fill="#e5e7eb" stroke="#374151" stroke-width="0.5" />
                     <circle id="hole-circle" cx="50" cy="25" r="12" fill="#ffffff" stroke="#374151" stroke-width="1" />
                     <line x1="50" y1="13" x2="50" y2="5" stroke="var(--color-azul)" stroke-width="1" />
@@ -96,18 +96,20 @@
                 </svg>
             </div>
             
-            <div style="margin-top: 20px; padding: 15px; border: 1px solid var(--color-azul); border-radius: 10px; background: rgba(255, 255, 255, 0.1); max-width: 400px; margin-left: auto; margin-right: auto;">
-                <p id="instruction-text" style="color: var(--color-gris); font-weight: 600;">
+            <div class="instruction-container" style="margin: 20px auto; padding: 15px; border: 1px solid var(--color-azul); border-radius: 10px; background: rgba(255, 255, 255, 0.1); max-width: 500px;">
+                <p id="instruction-text" style="color: var(--color-gris); font-weight: 600; margin: 0; font-size: 0.95rem; line-height: 1.4;">
                     Un agujero con su diámetro nominal, antes de aplicar la tolerancia.
                 </p>
             </div>
             
-            <button id="mmc-button" class="btn" style="margin-top: 20px;">
-                Mostrar Condición de Máximo Material (MMC)
-            </button>
-            <button id="reset-button" class="btn" style="margin-top: 20px; display: none;">
-                Restablecer
-            </button>
+            <div class="button-container" style="margin-top: 20px;">
+                <button id="mmc-button" class="btn responsive-btn" style="margin: 5px;">
+                    Mostrar Condición de Máximo Material (MMC)
+                </button>
+                <button id="reset-button" class="btn responsive-btn" style="margin: 5px; display: none;">
+                    Restablecer
+                </button>
+            </div>
         </div>
     </div>
 
@@ -127,16 +129,16 @@
         <div class="card-content hover-highlight">
             <div class="chart-container" style="position: relative; margin: 20px 0;">
                 <!-- Imagen del gráfico -->
-                <img id="tolerance-chart" src="../assets/images/M1/pos_tolerancia.png" alt="Gráfico de posiciones de tolerancia para agujero y eje" style="width: 100%; height: auto; border-radius: 0.5rem;">
+                <img id="tolerance-chart" src="../assets/images/M1/pos_tolerancia.png" alt="Gráfico de posiciones de tolerancia para agujero y eje" class="responsive-image" style="width: 100%; height: auto; border-radius: 0.5rem;">
                 
                 <!-- Recuadros para las zonas interactivas -->
                 <div id="hole-tolerance" class="highlight-area" style="position: absolute; top: 1%; left: 1.5%; width: 44%; height: 50%; border: 2px solid transparent; cursor: pointer; transition: border-color 0.2s;"></div>
                 <div id="shaft-tolerance" class="highlight-area" style="position: absolute; top: 1%; left: 55%; width: 44%; height: 50%; border: 2px solid transparent; cursor: pointer; transition: border-color 0.2s;"></div>
 
-                <div id="info-box" class="info-box" style="position: absolute; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; pointer-events: none; opacity: 0; transition: opacity 0.2s; transform: translate(-50%, -100%);"></div>
+                <div id="info-box" class="info-box" style="position: absolute; background-color: rgba(0, 0, 0, 0.8); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; pointer-events: none; opacity: 0; transition: opacity 0.2s; transform: translate(-50%, -100%); z-index: 10; max-width: 250px; font-size: 0.85rem; line-height: 1.3;"></div>
             </div>
             
-            <div style="margin-top: 20px; padding: 15px; border-left: 4px solid var(--color-azul); background: rgba(255, 255, 255, 0.05);">
+            <div class="explanation-box" style="margin-top: 20px; padding: 15px; border-left: 4px solid var(--color-azul); background: rgba(255, 255, 255, 0.05);">
                 <h3 style="color: var(--color-azul); margin-bottom: 10px;">Explicación del gráfico</h3>
                 <p style="color: var(--color-gris);">
                     El gráfico ilustra el margen de variación permitido en la posición real de un elemento (un agujero y un eje en este caso) respecto a su ubicación teórica, el cual es especificado mediante <span class="highlight">tolerancias geométricas</span> en un plano técnico.
@@ -154,14 +156,14 @@
         </div>
 
         <div class="card-content hover-highlight" style="margin-bottom: 30px;">
-            Aquí puedes explorar el concepto de <span class="highlight">diámetro nominal</span> y <span class="highlight">diámetro real</span> en un modelo 3D. Usa el ratón para rotar la pieza y el scroll para hacer zoom.
+            Aquí puedes explorar el concepto de <span class="highlight">diámetro nominal</span> y <span class="highlight">diámetro real</span> en un modelo 3D. <span class="mobile-instruction">Toca y arrastra para rotar la pieza.</span><span class="desktop-instruction">Usa el ratón para rotar la pieza y el scroll para hacer zoom.</span>
         </div>
 
         <div class="card-content hover-highlight">
             <!-- Contenedor 3D -->
-            <div id="three-d-container" style="width: 100%; height: 400px; background-color: #e5e7eb; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin: 20px 0;"></div>
+            <div id="three-d-container" class="responsive-3d-container" style="width: 100%; height: 400px; background-color: #e5e7eb; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin: 20px 0;"></div>
             
-            <div class="theory-grid" style="margin-top: 30px;">
+            <div class="theory-grid responsive-grid" style="margin-top: 30px;">
                 <div class="theory-card">
                     <h3>Fórmulas de Tolerancia</h3>
                     <p>Para calcular las tolerancias en una cota de plano:</p>
@@ -189,11 +191,11 @@
     <div class="case-study">
         
         <div class="card-content hover-highlight">
-            <div class="didactic-image-container" id="didacticImageContainer">
+            <div class="didactic-image-container responsive-didactic-container" id="didacticImageContainer">
                 <!-- Imagen principal -->
                 <img src="../assets/images/M1/for_tolerancia.png" 
                      alt="Fórmulas de tolerancia" 
-                     class="didactic-main-image" 
+                     class="didactic-main-image responsive-image" 
                      id="didacticMainImage">
 
                 <!-- Marcadores numerados -->
@@ -205,9 +207,38 @@
                 <div class="didactic-marker" id="didacticMarker6" data-info="6" style="top: 42.5%; left: 57%;">6</div>
 
                 <!-- Panel de descripciones -->
-                <div class="didactic-description-panel" id="didacticDescriptionPanel">
+                <div class="didactic-description-panel responsive-description-panel" id="didacticDescriptionPanel">
                     <div class="didactic-description-content" id="didacticDescriptionContent">
                         <div class="didactic-default-message">Pasa el cursor sobre los números para ver la información</div>
+                        
+                        <!-- Información completa para móviles -->
+                        <div class="mobile-markers-info" style="display: none;">
+                            <h3 style="color: var(--color-azul); margin-bottom: 15px; text-align: center;">Puntos de Información</h3>
+                            <div class="mobile-marker-item" style="margin-bottom: 15px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid var(--color-azul);">
+                                <strong style="color: var(--color-azul);">Punto 1 - Medida Nominal (MN):</strong>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Es la dimensión teórica o de referencia especificada en el diseño.</p>
+                            </div>
+                            <div class="mobile-marker-item" style="margin-bottom: 15px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid var(--color-azul);">
+                                <strong style="color: var(--color-azul);">Punto 2 - Medida Máxima (Mmáx):</strong>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">El valor más grande permitido dentro de la tolerancia especificada.</p>
+                            </div>
+                            <div class="mobile-marker-item" style="margin-bottom: 15px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid var(--color-azul);">
+                                <strong style="color: var(--color-azul);">Punto 3 - Desviación Superior (DS):</strong>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Diferencia entre la medida máxima y la medida nominal.</p>
+                            </div>
+                            <div class="mobile-marker-item" style="margin-bottom: 15px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid var(--color-azul);">
+                                <strong style="color: var(--color-azul);">Punto 4 - Medida Real (MR):</strong>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">La dimensión actual medida en la pieza fabricada.</p>
+                            </div>
+                            <div class="mobile-marker-item" style="margin-bottom: 15px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid var(--color-azul);">
+                                <strong style="color: var(--color-azul);">Punto 5 - Medida Mínima (Mmín):</strong>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">El valor más pequeño permitido dentro de la tolerancia especificada.</p>
+                            </div>
+                            <div class="mobile-marker-item" style="margin-bottom: 0; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid var(--color-azul);">
+                                <strong style="color: var(--color-azul);">Punto 6 - Desviación Inferior (DI):</strong>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Diferencia entre la medida mínima y la medida nominal.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,7 +247,9 @@
   </div>
   
   <!-- Botón de continuar -->
-  <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+  <div class="continue-button-container">
+    <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+  </div>
 
   <!--AUDIOv2-->
   <div class="audio-control-wrapper" style="z-index: 9999;">
@@ -297,8 +330,64 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   
   <script>
-    // Estilos CSS adicionales para las animaciones
+    // Estilos CSS adicionales para las animaciones y responsive
     const additionalStyles = `
+        /* Estilos responsive generales */
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .responsive-btn {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .responsive-3d-container {
+            min-height: 300px;
+        }
+
+        .responsive-didactic-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .responsive-description-panel {
+            margin-top: 20px;
+        }
+
+        /* Estilos para el botón continuar */
+        .continue-button-container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .mobile-markers-info {
+            display: none;
+        }
+
+        /* Instrucciones específicas para dispositivos */
+        .mobile-instruction {
+            display: none;
+        }
+
+        .desktop-instruction {
+            display: inline;
+        }
+
+        /* Animaciones existentes */
         .mmc-active {
             transform: scale(0.85);
             transition: transform 0.5s ease-in-out;
@@ -313,6 +402,236 @@
         }
         .highlight-area:hover {
             border-color: #3b82f6 !important;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .titulo-epp {
+                font-size: 1.5rem !important;
+                margin: 10px 15px !important;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .case-header h2 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .card-content {
+                padding: 20px 15px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .img-concepto {
+                max-width: 100% !important;
+                margin: 20px auto 0 auto !important;
+            }
+
+            .svg-container svg {
+                min-height: 180px !important;
+                max-height: 220px !important;
+            }
+
+            .instruction-container {
+                max-width: 100% !important;
+                margin: 15px 0 !important;
+                padding: 12px !important;
+            }
+
+            .button-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .responsive-btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 14px 20px;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+
+            .chart-container {
+                margin: 15px 0 !important;
+            }
+
+            .info-box {
+                max-width: 200px !important;
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.8rem !important;
+            }
+
+            .explanation-box {
+                padding: 12px !important;
+                margin-top: 15px !important;
+            }
+
+            .explanation-box h3 {
+                font-size: 1.1rem;
+            }
+
+            .responsive-3d-container {
+                height: 300px !important;
+                min-height: 250px !important;
+            }
+
+            .theory-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+
+            .theory-card {
+                padding: 15px !important;
+            }
+
+            .theory-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .theory-card p, .theory-card li {
+                font-size: 0.9rem;
+            }
+
+            /* Mejoras para marcadores didácticos en móvil */
+            .responsive-didactic-container {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+
+            .didactic-main-image {
+                order: 1 !important;
+            }
+
+            .didactic-marker {
+                display: none !important; /* Ocultar marcadores en móvil */
+            }
+
+            .responsive-description-panel {
+                order: 2 !important;
+                position: static !important;
+                margin-top: 0 !important;
+                padding: 20px !important;
+                border-radius: 12px !important;
+                background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%) !important;
+                border: 2px solid var(--color-azul) !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+            }
+
+            .didactic-default-message {
+                display: none !important; /* Ocultar mensaje por defecto en móvil */
+            }
+
+            .mobile-markers-info {
+                display: block !important; /* Mostrar información completa en móvil */
+            }
+
+            .mobile-instruction {
+                display: inline;
+            }
+
+            .desktop-instruction {
+                display: none;
+            }
+
+            /* Botón continuar en móvil */
+            .continue-button-container {
+                justify-content: flex-end !important;
+                padding: 20px 15px !important;
+            }
+
+            .start-button {
+                margin: 0 !important;
+                width: auto !important;
+                min-width: 150px !important;
+            }
+        }
+
+        /* Responsive para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .titulo-epp {
+                font-size: 1.8rem !important;
+                margin: 10px 30px !important;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .responsive-btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+
+            .responsive-3d-container {
+                height: 350px !important;
+            }
+
+            .didactic-marker {
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 14px !important;
+            }
+
+            .continue-button-container {
+                padding: 20px 30px !important;
+            }
+        }
+
+        /* Responsive para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .titulo-epp {
+                font-size: 1.3rem !important;
+                margin: 10px 10px !important;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .case-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .card-content {
+                padding: 15px 10px;
+                font-size: 0.9rem;
+            }
+
+            .svg-container svg {
+                min-height: 160px !important;
+                max-height: 200px !important;
+            }
+
+            .responsive-btn {
+                font-size: 0.8rem;
+                padding: 12px 16px;
+            }
+
+            .responsive-3d-container {
+                height: 250px !important;
+                min-height: 200px !important;
+            }
+
+            .theory-card {
+                padding: 12px !important;
+            }
+
+            .continue-button-container {
+                padding: 20px 10px !important;
+            }
+
+            .start-button {
+                min-width: 120px !important;
+                font-size: 0.9rem !important;
+            }
         }
     `;
     
@@ -360,19 +679,41 @@
             }
         };
 
+        // Función para mostrar información (funciona tanto en hover como en touch)
+        function showInfo(id, e) {
+            if (infoBox && chart) {
+                const rect = chart.getBoundingClientRect();
+                const x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+                const y = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+                
+                infoBox.style.left = `${x - rect.left}px`;
+                infoBox.style.top = `${y - rect.top}px`;
+                infoBox.textContent = areas[id].text;
+                infoBox.style.opacity = 1;
+            }
+        }
+
+        function hideInfo() {
+            if (infoBox) {
+                infoBox.style.opacity = 0;
+            }
+        }
+
         Object.keys(areas).forEach(id => {
             const area = document.getElementById(id);
             if (area && chart && infoBox) {
-                area.addEventListener('mousemove', (e) => {
-                    const rect = chart.getBoundingClientRect();
-                    infoBox.style.left = `${e.clientX - rect.left}px`;
-                    infoBox.style.top = `${e.clientY - rect.top}px`;
-                    infoBox.textContent = areas[id].text;
-                    infoBox.style.opacity = 1;
+                // Eventos para desktop
+                area.addEventListener('mousemove', (e) => showInfo(id, e));
+                area.addEventListener('mouseleave', hideInfo);
+                
+                // Eventos para móviles
+                area.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    showInfo(id, e);
                 });
-
-                area.addEventListener('mouseleave', () => {
-                    infoBox.style.opacity = 0;
+                area.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    setTimeout(hideInfo, 2000); // Ocultar después de 2 segundos en móvil
                 });
             }
         });
@@ -480,17 +821,86 @@
             }
 
             // Manejar el redimensionamiento de la ventana
-            window.addEventListener('resize', () => {
-                camera.aspect = container3D.clientWidth / container3D.clientHeight;
+            function handleResize() {
+                const width = container3D.clientWidth;
+                const height = container3D.clientHeight;
+                camera.aspect = width / height;
                 camera.updateProjectionMatrix();
-                renderer.setSize(container3D.clientWidth, container3D.clientHeight);
-            });
+                renderer.setSize(width, height);
+            }
+
+            window.addEventListener('resize', handleResize);
 
             animate();
         }
 
         // Inicializar 3D después de un pequeño delay para asegurar que Three.js esté cargado
         setTimeout(init3D, 500);
+
+        // Mejorar la funcionalidad de los marcadores didácticos para móviles
+        const markers = document.querySelectorAll('.didactic-marker');
+        const descriptionPanel = document.getElementById('didacticDescriptionPanel');
+        const descriptionContent = document.getElementById('didacticDescriptionContent');
+        const mobileMarkersInfo = document.querySelector('.mobile-markers-info');
+        const defaultMessage = document.querySelector('.didactic-default-message');
+
+        // Información para cada marcador
+        const markerInfo = {
+            '1': 'Medida Nominal (MN): Es la dimensión teórica o de referencia especificada en el diseño.',
+            '2': 'Medida Máxima (Mmáx): El valor más grande permitido dentro de la tolerancia especificada.',
+            '3': 'Desviación Superior (DS): Diferencia entre la medida máxima y la medida nominal.',
+            '4': 'Medida Real (MR): La dimensión actual medida en la pieza fabricada.',
+            '5': 'Medida Mínima (Mmín): El valor más pequeño permitido dentro de la tolerancia especificada.',
+            '6': 'Desviación Inferior (DI): Diferencia entre la medida mínima y la medida nominal.'
+        };
+
+        // Mostrar información completa en móviles al cargar la página
+        function checkMobileView() {
+            if (window.innerWidth <= 768) {
+                if (mobileMarkersInfo) {
+                    mobileMarkersInfo.style.display = 'block';
+                }
+                if (defaultMessage) {
+                    defaultMessage.style.display = 'none';
+                }
+            } else {
+                if (mobileMarkersInfo) {
+                    mobileMarkersInfo.style.display = 'none';
+                }
+                if (defaultMessage) {
+                    defaultMessage.style.display = 'block';
+                }
+            }
+        }
+
+        // Verificar vista móvil al cargar y al redimensionar
+        checkMobileView();
+        window.addEventListener('resize', checkMobileView);
+
+        markers.forEach(marker => {
+            const info = marker.getAttribute('data-info');
+            
+            // Para desktop (hover)
+            marker.addEventListener('mouseenter', () => {
+                if (descriptionContent && window.innerWidth > 768) {
+                    descriptionContent.innerHTML = `<strong>Punto ${info}:</strong> ${markerInfo[info]}`;
+                }
+            });
+
+            marker.addEventListener('mouseleave', () => {
+                if (descriptionContent && window.innerWidth > 768) {
+                    descriptionContent.innerHTML = '<div class="didactic-default-message">Pasa el cursor sobre los números para ver la información</div>';
+                }
+            });
+
+            // Para móviles (touch) - aunque los marcadores están ocultos en móvil
+            marker.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (descriptionContent && window.innerWidth > 768) {
+                    descriptionContent.innerHTML = `<strong>Punto ${info}:</strong> ${markerInfo[info]}`;
+                }
+            });
+        });
     });
   </script>
   
