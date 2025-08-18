@@ -191,37 +191,34 @@
 
     <!-- Sección Quiz (bloque original para funcionalidad) -->
     <div id="quiz2" class="content-section">
-            <div class="quiz-container">
-                <h2 style="color: var(--color-azul); text-align: center; margin-bottom: 30px;">Evaluación de
-                    Conocimientos</h2>
+        <div class="quiz-container">
+            <h2 style="color: var(--color-azul); text-align: center; margin-bottom: 30px;">Evaluación de
+                Conocimientos</h2>
 
-                <div id="question1" class="quiz-question">
-                    1. ¿Qué es la tolerancia dimensional?
-                </div>
-                <div class="quiz-options">
-                    <div class="quiz-option" onclick="selectAnswer(this, false)">La diferencia entre el valor máximo y mínimo que puede medir un instrumento.</div>
-                    <div class="quiz-option" onclick="selectAnswer(this, true)">El intervalo de medidas permitido para una dimensión específica sin afectar la funcionalidad.</div>
-                    <div class="quiz-option" onclick="selectAnswer(this, false)">El margen de error en el ensamblaje de piezas móviles.</div>
-                    <div class="quiz-option" onclick="selectAnswer(this, false)">La distancia mínima entre dos piezas en contacto.</div>
-                </div>
+            <div id="question1" class="quiz-question">
+                <!-- La pregunta se cargará dinámicamente -->
+            </div>
+            <div class="quiz-options">
+                <!-- Las opciones se cargarán dinámicamente -->
+            </div>
 
-                <button class="btn" onclick="nextQuestion()" id="nextBtn" style="display: none;">
-                    Siguiente Pregunta
+            <button class="btn" onclick="nextQuestion()" id="nextBtn" style="display: none;">
+                Siguiente Pregunta
+                <span class="arrow">❯</span>
+            </button>
+
+            <div id="results" style="display: none; text-align: center; margin-top: 30px;">
+                <h3 style="color: var(--color-azul-oscuro);">¡Evaluación Completada!</h3>
+                <p id="finalScore">Has respondido correctamente <span id="scoreText"></span> de 2 preguntas</p>
+                <p id="finalMessage"></p>
+                <button class="btn" onclick="resetQuiz()">Reiniciar Evaluación</button>
+                <button class="btn" onclick="goToNextPage()" style="background: var(--color-azul-degradado); color: var(--color-blanco);">
+                    Continuar
                     <span class="arrow">❯</span>
                 </button>
-
-                <div id="results" style="display: none; text-align: center; margin-top: 30px;">
-                    <h3 style="color: var(--color-azul-oscuro);">¡Evaluación Completada!</h3>
-                    <p id="finalScore">Has respondido correctamente <span id="scoreText"></span> de 3 preguntas</p>
-                    <p id="finalMessage"></p>
-                    <button class="btn" onclick="resetQuiz()">Reiniciar Evaluación</button>
-                    <button class="btn" onclick="goToNextPage()" style="background: var(--color-azul-degradado); color: var(--color-blanco);">
-                        Continuar
-                        <span class="arrow">❯</span>
-                    </button>
-                </div>
             </div>
         </div>
+    </div>
     </div>
   </div>
 
@@ -299,6 +296,122 @@
 
   <script src="../js/audioPlayer.js"></script>
   <script>
+    // Variables globales para el quiz
+    let currentQuestion = 1;
+    let correctAnswers = 0;
+
+    // Preguntas específicas sobre aplicativos para tolerancias
+    const quizQuestions = [
+        {
+            q: "1. ¿Para las tolerancias determinadas ¿Qué instrumento de medición se debe usar?",
+            options: [
+                { text: "Vernier", correct: false },
+                { text: "Alexómetro", correct: false },
+                { text: "Regla", correct: false },
+                { text: "Micrómetro", correct: true }
+            ]
+        },
+        {
+            q: "2. Para las tolerancias determinadas ¿Con qué grado de precisión se debe realizar la medición?",
+            options: [
+                { text: "Decimal", correct: false },
+                { text: "Centecimal", correct: false },
+                { text: "Milesimal", correct: true },
+                { text: "Diezmilesimal", correct: false }
+            ]
+        }
+    ];
+
+    // Función para cargar pregunta
+    function loadQuestion(questionNum) {
+        if (questionNum <= quizQuestions.length) {
+            const question = quizQuestions[questionNum - 1];
+            document.getElementById('question1').textContent = question.q;
+
+            const optionsContainer = document.querySelector('.quiz-options');
+            optionsContainer.innerHTML = '';
+
+            question.options.forEach(option => {
+                const div = document.createElement('div');
+                div.className = 'quiz-option';
+                div.textContent = option.text;
+                div.onclick = () => selectAnswer(div, option.correct);
+                optionsContainer.appendChild(div);
+            });
+
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+    }
+
+    // Función para seleccionar respuesta
+    function selectAnswer(option, isCorrect) {
+        // Deshabilitar todas las opciones
+        const options = option.parentNode.querySelectorAll('.quiz-option');
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+            if (opt === option) {
+                opt.classList.add(isCorrect ? 'correct' : 'incorrect');
+            } else if (opt.onclick.toString().includes('true')) {
+                opt.classList.add('correct');
+            }
+        });
+
+        if (isCorrect) {
+            correctAnswers++;
+        }
+
+        document.getElementById('nextBtn').style.display = 'inline-block';
+    }
+
+    // Función para siguiente pregunta
+    function nextQuestion() {
+        currentQuestion++;
+
+        if (currentQuestion <= 2) {
+            loadQuestion(currentQuestion);
+        } else {
+            showResults();
+        }
+    }
+
+    // Función para mostrar resultados
+    function showResults() {
+        const percentage = (correctAnswers / 2) * 100;
+        document.getElementById('scoreText').textContent = correctAnswers;
+
+        let message = "";
+        if (percentage === 100) {
+            message = "¡Excelente! Dominas completamente el uso del aplicativo de tolerancias.";
+        } else if (percentage >= 66) {
+            message = "¡Muy bien! Tienes un buen entendimiento del aplicativo.";
+        } else {
+            message = "Considera revisar los pasos para usar el aplicativo nuevamente.";
+        }
+
+        document.getElementById('finalMessage').textContent = message;
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('nextBtn').style.display = 'none';
+
+        // Ocultar la pregunta actual
+        document.getElementById('question1').style.display = 'none';
+        document.querySelector('.quiz-options').style.display = 'none';
+    }
+
+    // Función para reiniciar quiz
+    function resetQuiz() {
+        currentQuestion = 1;
+        correctAnswers = 0;
+
+        // Mostrar elementos del quiz
+        document.getElementById('question1').style.display = 'block';
+        document.querySelector('.quiz-options').style.display = 'grid';
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+
+        // Cargar primera pregunta
+        loadQuestion(1);
+    }
+
     // Script para navegación SECCIONES NUEVAS
     function showSection2(sectionId, btn) {
       document.querySelectorAll('.container .content-section').forEach(s => s.classList.remove('active'));
@@ -307,32 +420,11 @@
       document.querySelectorAll('.container .nav-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // Actualizar progreso
-      const sections = ['theory2','case2','analysis2','quiz2'];
-      const currentIndex = sections.indexOf(sectionId);
-      const progress = ((currentIndex + 1) / sections.length) * 100;
-      document.getElementById('progressBar2').style.width = progress + '%';
-
-      // Si es quiz, reiniciamos y cargamos la primera pregunta igual que M1_pagina4.html
-      if(sectionId==='quiz2'){
-        if(typeof resetQuiz === "function"){
+      // Si es quiz2, reiniciamos y cargamos la primera pregunta
+      if(sectionId === 'quiz2'){
+        setTimeout(() => {
           resetQuiz();
-        }
-        if(typeof loadQuestion === "function"){
-          loadQuestion(1);
-        }
-      }
-      // Si es quiz2 (legacy), solo estructura
-      if(sectionId==='quiz2'){
-        var quizResults = document.querySelector('#quiz2 #results');
-        var quizQuestion = document.querySelector('#quiz2 #question1');
-        var quizOptions = document.querySelector('#quiz2 .quiz-options');
-        if(quizResults && quizQuestion && quizOptions){
-          quizResults.style.display='none';
-          quizQuestion.style.display='block';
-          quizOptions.style.display='grid';
-          document.getElementById('nextBtn').style.display='none';
-        }
+        }, 100);
       }
     }
   </script>
